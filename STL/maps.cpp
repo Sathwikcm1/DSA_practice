@@ -19,7 +19,4 @@ int main() {
     m.erase(1); // removing the element with key 1.
     m.clear(); // this would again erase everything in the map.
     return 0;
-
-
-
 }
