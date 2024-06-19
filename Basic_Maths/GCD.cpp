@@ -30,6 +30,8 @@ int optimal_approach(int n , int m){            // time complexity : O(min(n,m))
     else return n;
 }
 
+
+
 int main() {
     int n = 5;
     int m = 10;
@@ -38,3 +40,22 @@ int main() {
     cout << "This is the optimal approach: " << optimal_approach(n,m) << endl;
     return 0;
 }
+
+//vector<long long> lcmAndGcd(long long A , long long B) {          // this one's got more lcm and also got gcd.
+        // code here
+//         long long originalA = A, originalB = B;
+
+    // Compute GCD using the Euclidean algorithm
+//     while (B != 0) {
+//         long long temp = B;
+//         B = A % B;
+//         A = temp;
+//     }
+//     long long gcd = A;
+
+    // Compute LCM using the relation LCM * GCD = A * B
+//     long long lcm = (originalA / gcd) * originalB;
+
+    // Return the results as a vector
+//     return {lcm, gcd};
+//     }
