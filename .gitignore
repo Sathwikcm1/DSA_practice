@@ -1,2 +1,7 @@
 .*
 !*.*
+# Ignore all executables (files without extensions)
+*[^.]*
+
+# Allow .cpp files to be tracked
+!*.cpp
