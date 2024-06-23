@@ -28,7 +28,7 @@ vector<int> better_approach(vector<int> arr, int n){        // this is the bette
         if(mp[arr[i]] == mini) ans.push_back(arr[i]);
         if(ans.size() == 2) break;                  // if the size of the ans is 2, then we break the loop. because that is the ans.
     }
-    return ans;
+    return ans;     
 }
 
 vector<int> optimal_approach(vector<int> arr,int n){        // this is the optimal approach, time complexity : O(n) and space complexity : O(1).

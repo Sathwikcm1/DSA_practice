@@ -44,7 +44,7 @@ vector<vector<int>> optimal_approach(vector<int> arr, int n){  //? time complexi
     vector<vector<int>> ans;
     sort(arr.begin(),arr.end());                    //? so we first sort the array given to us we are using 2 pointers method here.
     for(int i = 0; i < n; i++){
-        if( i != 0 && arr[i] == arr[i-1]) continue;      //? so we avoid the duplicate triplets.
+        if( i != 0 && arr[i] == arr[i-1]) continue;      //? so we avoid the duplicate triplets. skips the remaining code if we find the duplicate triplet.
         int j = i+1;                                   //? so this is the second pointer.
         int k = n-1;                                    //? so this is the third pointer.
         while(j<k){                                     //? this should run till j crosses k.
