@@ -36,11 +36,11 @@ vector<int> optimal_approach(vector<int> arr,int n){        // this is the optim
     int ele1 = INT_MIN;                                 // this is moore's voting algorithm that is present in the majority element n/2 times problem.
     int ele2 = INT_MIN;
     for(int i = 0; i < n; i++){
-        if(cnt1 == 0){                                  // we are applying the same thing here.
+        if(cnt1 == 0 && ele2 != arr[i]) {                                  // we are applying the same thing here. // if ele2 is not equal to the current element of the array., because element2 is being looked by the next if block.
             cnt1 = 1;
             ele1 = arr[i];                          // so basically there is one extra count in this problem , because the ans vector can have only 2 items we have 2 count. so if the cnt1 is zero. we initialse the count to 1, and el is initialised with the current element of the array.
         }
-        else if(cnt2 == 0){                         // the same way if cnt2 is also zero, we do the same process.
+        else if(cnt2 == 0 && ele1 != arr[i]){                         // the same way if cnt2 is also zero, we do the same process.
             cnt2 = 1;
             ele2 = arr[i];
         }
@@ -52,7 +52,7 @@ vector<int> optimal_approach(vector<int> arr,int n){        // this is the optim
         }
     }
     vector<int> ls;
-    cnt1 = 0, cnt2 = 0;                         // checking the answer. reinitializing the cnt to zero. 
+    cnt1 = 0, cnt2 = 0;                         // manually checking if the elements present in el1 and el2 are really major elements present in the array. 
 
     for(int i = 0; i<n;i++){
         if(arr[i] == ele1) cnt1++;
