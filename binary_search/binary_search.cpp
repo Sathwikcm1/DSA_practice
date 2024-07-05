@@ -4,17 +4,17 @@
 using namespace std;
 
 
-int binary_search(vector<int> arr, int n, int target){
-    int low = 0;
-    int high = n-1;
+int binary_search(vector<int> arr, int n, int target){      //? we are basically searching in a sorted array. so the array must be sorted otherwise it should sorted before the algorithm starts
+    int low = 0;                                            //? this is low pointer pointing to the first element of the array
+    int high = n-1;                                         //? this is the high pointer pointing to the last element of the array.
     
-    while(low <= high){
-        int mid = (low+high)/2;
-        if(arr[mid] == target) return mid;
-        else if(target > arr[mid]) low = mid+1;
-        else high = mid-1; 
+    while(low <= high){                                     //? this should run till the low pointer crosses the high pointer
+        int mid = (low+high)/2;                             //? calculating the mid index 
+        if(arr[mid] == target) return mid;                  //? checking if the mid index is equal to the target, if it is then we return the index.
+        else if(target > arr[mid]) low = mid+1;             //? if the target is greater than the mid index, then we increase the low pointer so that we can get the next index.
+        else high = mid-1;                                  //? else we decrease the high pointer so that we can get the next index.
     }
-    return -1;
+    return -1;                                              //? otherwise we return -1 indicating 
 }
 int main() {
 vector<int> arr{1,2,3,4,5,6,7,8,9,10};
