@@ -4,7 +4,7 @@
 using namespace std;
 
 
-int binary_search(vector<int> arr, int n, int target){      //? we are basically searching in a sorted array. so the array must be sorted otherwise it should sorted before the algorithm starts
+int binary_searchs(vector<int> arr, int n, int target){      //? we are basically searching in a sorted array. so the array must be sorted otherwise it should sorted before the algorithm starts
     int low = 0;                                            //? this is low pointer pointing to the first element of the array
     int high = n-1;                                         //? this is the high pointer pointing to the last element of the array.
     
@@ -19,8 +19,11 @@ int binary_search(vector<int> arr, int n, int target){      //? we are basically
 int main() {
 vector<int> arr{1,2,3,4,5,6,7,8,9,10};
 int n = arr.size();
-if(binary_search(arr, n, 4) != -1){
-    cout << "at " << binary_search(arr, n, 4)+1 << endl;
+if(binary_searchs(arr, n, 4) != -1){
+    cout << "at " << binary_searchs(arr, n, 4)+1 << endl;
 }else cout << "not found" << endl;
+bool mew = binary_search(arr.begin(), arr.end(), 4);
+cout << mew;
+cout << endl;
 return 0;
 }
