@@ -1,7 +1,7 @@
-//! we are basically searching in a sorted array. we find if the given number is present in the array or not. we divide the array into two parts and check if the number is present in the array or not. and then keep on doing it.
+// we are basically searching in a sorted array. we find if the given number is present in the array or not. we divide the array into two parts and check if the number is present in the array or not. and then keep on doing it.
 
 #include<bits/stdc++.h>
-using namespace std;                                          //! page no : 88.
+using namespace std;
 
 
 int binary_search(vector<int> arr, int n, int target){      //? we are basically searching in a sorted array. so the array must be sorted otherwise it should sorted before the algorithm starts
