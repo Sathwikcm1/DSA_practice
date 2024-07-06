@@ -6,5 +6,6 @@ int main() {
 int arr[] = {1, 2, 3, 4, 5};
 int n = sizeof(arr[0])/sizeof(arr[0]);
 cout << n << endl;
+cout
 return 0;
 }
