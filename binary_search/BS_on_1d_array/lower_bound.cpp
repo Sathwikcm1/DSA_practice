@@ -3,7 +3,7 @@
 using namespace std;
 #define ll long long
 
-int lower_bound(vector<int> arr, int n, int target){        //? we are basically searching in a sorted array. so the array must be sorted otherwise it should sorted before the algorithm starts
+int lower_boundz(vector<int> arr, int n, int target){        //? we are basically searching in a sorted array. so the array must be sorted otherwise it should sorted before the algorithm starts
     int low = 0, high = n-1 ,ans = n;                       //? answer is the size of the array because we have to return the lowest index of the element in the array which is arr[i] >= target if not found then we return the size of the array.
     while(low<=high){
         int mid = (low+high)/2;
@@ -20,6 +20,9 @@ int main() {
     vector<int> arr{1, 2, 2, 2, 2, 3, 3, 3, 3};
     int n = arr.size();
     int target = 2;
-    cout << lower_bound(arr,n,target) << endl;
+    cout << lower_boundz(arr,n,target) << endl;
+    //todo otherwise we can just the STL function that is lower_bound(arr.begin(),arr.end(),target)
+    lower_bound(arr.begin(),arr.end(),target);
+    cout << lower_bound(arr.begin(),arr.end(),target) - arr.begin() << endl; //todo that extra "- arr.begin()" is used to get the index , otherwise it would have returned the iterator
     return 0;
 }
