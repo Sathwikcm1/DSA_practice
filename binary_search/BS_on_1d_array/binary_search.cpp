@@ -17,7 +17,7 @@ int binary_searchs(vector<int> arr, int n, int target){      //? we are basicall
     return -1;                                              //? otherwise we return -1 indicating 
 }
 int main() {
-vector<int> arr{1,2,3,4,5,6,7,8,9,10};
+vector<int> arr{1,2,3,4,5,6,7,8,9,10}; 
 int n = arr.size();
 if(binary_searchs(arr, n, 4) != -1){
     cout << "at " << binary_searchs(arr, n, 4)+1 << endl;
