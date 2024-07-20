@@ -3,6 +3,36 @@
 using namespace std;
 #define ll long long
 
+int lower_bound_z(vector<int> arr, int n , int target){   
+    int low = 0; int high = n-1;  int ans = n;
+    while (low <= high)
+    {
+        int mid = (high+low)/2;
+        if(arr[mid] >= target) {
+            ans = mid;
+            high = mid - 1;
+        }else{
+            low = mid + 1;
+        }
+    }
+    
+    return ans;
+}
+
+int upper_bound_z(vector<int> arr, int n , int target){
+    int low=  0, high  = n-1 , ans = n;
+    while(low <= high){
+        int mid = (high+low)/2;
+        if(arr[mid] > target){
+            ans = mid;
+            high = mid - 1;
+        }else{
+            low = mid + 1;
+        }
+    }
+    return ans;
+}
+
 vector<int> brute_force(vector<int> arr, int n , int x) {  // this takes a time complexity of O(n) and space complexity of O(1).
     sort(arr.begin(), arr.end());   // first sort the array this alone takes the time complexity of O(nlogn).
     int first = -1, last = -1;      // we got the first and last occurrence of the element in the sorted array.
@@ -16,11 +46,55 @@ vector<int> brute_force(vector<int> arr, int n , int x) {  // this takes a time 
     return {first, last};               // and then we return a vector with the first and last index.
 }
 
+vector<int> better_approach(vector<int> arr, int n , int target){ //? this takes a time complexity of 2* O(log n) and space complexity of O(1).
+    int lb = lower_bound_z(arr, n, target);                     //? in this approach we are using the lower_bound function to find the first occurrence of the target in the array.
+    if(lb == n || arr[lb] != target) return {-1, -1};           //? if the lb == b, which means that the target is not found in the array, or the lb is not equal to the target then we return {-1, -1}.
+    return {lb , upper_bound_z(arr, n , target) - 1};           //? otherwise we return a vector or a pair with the lb and up - 1.
+}
+
+int first_occurrence(vector<int> arr, int n , int k){ //todo: i don't how this is better than the better approach but hear me out.
+    int first = -1, high = n-1, low = 0;
+    while(low <= high){             
+        int mid = (high+low)/2; 
+        if(arr[mid] == k){
+            first = mid;                                    //todo if you find the element, we update the first with the current index.
+            high = mid -1;                                  //todo then we update the high to mid - 1 because the element is definitely not in the right half of the array since we are trying to find the first occurrence.
+        }else if(arr[mid] < k) low = mid + 1;               //todo otherwise we update the low to mid + 1 because the element is definitely not in the left half of the array since we are trying to find the first occurrence.
+        else high = mid - 1;                                //todo otherwise we update the high to mid - 1 because the element is definitely not in the right half of the array since we are trying to find the first occurrence.
+    }   
+    return first;                                           //todo returning the first.
+}
+
+int last_occurrence(vector<int> arr, int n, int k){
+    int low = 0, high = n-1, last = -1;
+    while(low <= high){
+        int mid = (low+high)/2;
+        if(arr[mid] == k){
+            last = mid;
+            low = mid + 1;
+        }else if(arr[mid] < k) low = mid + 1;
+        else high = mid - 1;
+    }
+    return last;
+}
+
+vector<int> optimal_approach (vector<int> arr, int n , int k){
+    int first = first_occurrence(arr, n, k);
+    if (first == -1) return {-1,-1};
+    int last = last_occurrence(arr, n, k);
+    return {first, last};
+}
+
 int main() {
     vector<int> arr{5, 7, 7, 8, 8, 10};
     int n = arr.size();
     int x = 8;
+    sort(arr.begin(), arr.end());
     vector<int> ans = brute_force(arr,n,x);
+    cout << "The is brute force approach : \n";
     cout << ans[0] << " " << ans[1] << endl;
+    vector<int> ans2 = better_approach(arr,n,x);
+    cout << "The is better approach : \n";
+    cout << ans2[0] << " " << ans2[1] << endl;
     return 0;
 }

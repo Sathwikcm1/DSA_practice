@@ -5,7 +5,7 @@ using namespace std;
 #define ll long long
 
 int upper_boundz(vector<int> arr, int n, int target){        //? we are basically searching in a sorted array. so the array must be sorted otherwise it should sorted before the algorithm starts
-    int low = 0, high = n-1 ,ans = -1;                       //? answer is the index of the first element which is greater than the target
+    int low = 0, high = n-1 ,ans = n;                       //? answer is the index of the first element which is greater than the target
     while(low<=high){
         int mid = (low+high)/2;
         if(arr[mid] > target){                             //? we check if the mid index is less than the target or not if it is then we increase the low pointer so that we can get the next index.
