@@ -65,7 +65,7 @@ int first_occurrence(vector<int> arr, int n , int k){ //todo: i don't how this i
     return first;                                           //todo returning the first.
 }
 
-int last_occurrence(vector<int> arr, int n, int k){
+int last_occurrence(vector<int> arr, int n, int k){     //todo this is the same as above.
     int low = 0, high = n-1, last = -1;
     while(low <= high){
         int mid = (low+high)/2;
@@ -78,11 +78,11 @@ int last_occurrence(vector<int> arr, int n, int k){
     return last;
 }
 
-vector<int> optimal_approach (vector<int> arr, int n , int k){
+vector<int> optimal_approach (vector<int> arr, int n , int k){   //todo this is where we call the above two functions.
     int first = first_occurrence(arr, n, k);
-    if (first == -1) return {-1,-1};
+    if (first == -1) return {-1,-1};                            //todo: if first == -1 , which means that we did not find the target in the array at all, so there is no need to check for the last occurrence , which would again save us from a lot of time and space complexity.
     int last = last_occurrence(arr, n, k);
-    return {first, last};
+    return {first, last};                                       //todo well if we do find the first and last, we return it back as a vector.
 }
 
 int main() {
@@ -96,5 +96,8 @@ int main() {
     vector<int> ans2 = better_approach(arr,n,x);
     cout << "The is better approach : \n";
     cout << ans2[0] << " " << ans2[1] << endl;
+    vector<int> ans3 = optimal_approach(arr,n,x);
+    cout << "The is optimal approach : \n";
+    cout << ans3[0] << " " << ans3[1] << endl;
     return 0;
 }
