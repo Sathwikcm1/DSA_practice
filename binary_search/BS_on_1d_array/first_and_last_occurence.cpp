@@ -92,9 +92,9 @@ int main() {
     sort(arr.begin(), arr.end());
     vector<int> ans = brute_force(arr,n,x);
     cout << "The is brute force approach : \n";
-    cout << ans[0] << " " << ans[1] << endl;
+    cout << ans[0] << " " << ans[1] << endl; // something.
     vector<int> ans2 = better_approach(arr,n,x);
     cout << "The is better approach : \n";
     cout << ans2[0] << " " << ans2[1] << endl;
     return 0;
-}
+} // mew
