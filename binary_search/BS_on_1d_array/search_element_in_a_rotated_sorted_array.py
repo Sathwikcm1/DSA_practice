@@ -1,4 +1,5 @@
 #! The question here is that if a sorted array is rotated at some pivot unknown to you, then how would you look for the target in an optimal way?
+#! page no : 93
 def brute_force_approach(arr,target): #? this is basically the brute force apporach where we just look for the target by going through the array.
     for i in range(len(arr)):  #? this loop will run till the length of the array
         if arr[i] == target:   #? if the target is found then it will return the index
