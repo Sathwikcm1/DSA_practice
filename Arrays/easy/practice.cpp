@@ -6,6 +6,7 @@ int main() {
 int arr[] = {1, 2, 3, 4, 5};
 int n = sizeof(arr[0])/sizeof(arr[0]);
 cout << n << endl;
-cout
+cout << "Hello there this is me sathwik again , here out learning the neovim commands to make it look i'm wizard to the other people.\n";
+
 return 0;
 }
