@@ -1,7 +1,7 @@
 //! we have to return the lowest index of the element in the array which is arr[i] >= target.
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long
+#define ll long long                                         //? Page no : 89
 
 int lower_boundz(vector<int> arr, int n, int target){        //? we are basically searching in a sorted array. so the array must be sorted otherwise it should sorted before the algorithm starts
     int low = 0, high = n-1 ,ans = n;                       //? answer is the size of the array because we have to return the lowest index of the element in the array which is arr[i] >= target if not found then we return the size of the array.
