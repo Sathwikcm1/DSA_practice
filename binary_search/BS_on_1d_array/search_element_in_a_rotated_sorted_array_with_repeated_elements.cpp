@@ -4,7 +4,6 @@
 #include<bits/stdc++.h>                                                 //! page no : 94.
 using namespace std;
 #define ll long long
-
 bool brute_force_approach(vector<int> arr, int n, int target){
     for(int i = 0 ; i< n ; i++){
         if(arr[i] == target)
