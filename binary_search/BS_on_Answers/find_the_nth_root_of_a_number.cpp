@@ -45,6 +45,5 @@ int main() {
     cout << "The answer using brute approach is: " << ans << "\n";
     int ans2 = optimal_approach(n, m);
     cout << "The answer using optimal approach is : " << ans2 << "\n";
-
     return 0;
 }
