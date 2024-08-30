@@ -100,8 +100,4 @@ int main() {
     cout << "The is optimal approach : \n";
     cout << ans3[0] << " " << ans3[1] << endl;
     return 0;
-<<<<<<< HEAD
 }
-=======
-} // mew
->>>>>>> 348efe172ec2f3622d389a9da95b3fe526ae4362
