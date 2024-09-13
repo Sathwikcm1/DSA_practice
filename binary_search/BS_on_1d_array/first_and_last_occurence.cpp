@@ -48,11 +48,11 @@ vector<int> brute_force(vector<int> arr, int n , int x) {  // this takes a time 
 
 vector<int> better_approach(vector<int> arr, int n , int target){ //? this takes a time complexity of 2* O(log n) and space complexity of O(1).
     int lb = lower_bound_z(arr, n, target);                     //? in this approach we are using the lower_bound function to find the first occurrence of the target in the array.
-    if(lb == n || arr[lb] != target) return {-1, -1};           //? if the lb == b, which means that the target is not found in the array, or the lb is not equal to the target then we return {-1, -1}.
-    return {lb , upper_bound_z(arr, n , target) - 1};           //? otherwise we return a vector or a pair with the lb and up - 1.
+    if(lb == n || arr[lb] != target) return {-1, -1};           //? if the lb == n, which means that the target is not found in the array, or the lb is not equal to the target then we return {-1, -1}.
+    return {lb , upper_bound_z(arr, n , target) - 1};           //? otherwise we return a vector or a pair with the lb and up - 1. // we are returning the index of the first occurrence and the index of the last occurrence.
 }
 
-int first_occurrence(vector<int> arr, int n , int k){ //todo: i don't how this is better than the better approach but hear me out.
+int first_occurrence(vector<int> arr, int n , int k){ //todo: i don't how this is better than the better approach but hear me out in context of time complexity i mean. but hear me out.
     int first = -1, high = n-1, low = 0;
     while(low <= high){             
         int mid = (high+low)/2; 
@@ -65,7 +65,7 @@ int first_occurrence(vector<int> arr, int n , int k){ //todo: i don't how this i
     return first;                                           //todo returning the first.
 }
 
-int last_occurrence(vector<int> arr, int n, int k){     //todo this is the same as above.
+int last_occurrence(vector<int> arr, int n, int k){     //todo this is the same as above the only change is that we update the low to mid + 1 because the element is definitely not in the left half of the array since we are trying to find the last occurrence.
     int low = 0, high = n-1, last = -1;
     while(low <= high){
         int mid = (low+high)/2;

@@ -1,3 +1,5 @@
+//! we have to count the number of occurrences of an element in a sorted array. 
+//! how we know that this is a binary search problem, if we have to find the number of occurrences of an element in a sorted array we would run through a loop, and if we find the element we would update the count , so we see a pattern here there is  a range here , whenever there is range we can try and apply binary search.
 #include<bits/stdc++.h>
 using namespace std;
 #define ll long long
