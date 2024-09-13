@@ -1,28 +1,29 @@
+//! The question is simple: we have to find the minimum amount of time in which the koko can eat all the bananas withing the given time h.
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long
+#define ll long long                        //! page no : 106
 
 
 
-int maxinarr(vector<int> arr, int  n){
+int maxinarr(vector<int> arr, int  n){                      // this function is used to find the maximum element in the array.
     int ans = -1;
     for(int i = 0 ; i < n;i++) ans = max(ans,arr[i]);
     return ans;
 }
 
-int func(vector<int> arr, int hours){
+int func(vector<int> arr, int hours){                   //? this is func used to calculate the total hours it took to eat all the banana piles in the array.
     int n = arr.size();
     int totalhr = 0;
-    for(int i = 0; i < n; i++){
-        totalhr += ceil((double)arr[i]/hours);
+    for(int i = 0; i < n; i++){                         //? looping around the array.
+        totalhr += ceil((double)arr[i]/hours);          //? calculating the total hours. make sure to take double here, otherwise it will be int, which cannot be ceiled. 
     }
-    return totalhr;
+    return totalhr;                                     //? returning the total hours.
 }
 
-int minimumRateToEatBananas(vector<int> arr, int h) {
+int minimumRateToEatBananas(vector<int> arr, int h) {       //? this is the brute force approach. will take O(n * (maxinarr))
     // Write Your Code Here
     int n = arr.size();
-    for(int i = 1; i < maxinarr(arr,n); i++){
+    for(int i = 1; i < maxinarr(arr,n); i++){       //? this will run from 1(min bananas per hour to max) 
         int reqtime = func(arr, i);
         if( reqtime <= h) return i;
     }
