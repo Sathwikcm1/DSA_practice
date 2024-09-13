@@ -13,7 +13,7 @@ All the roses with 'arr[i]' less than equal to 3 have already bloomed after 3 da
 
 #include<bits/stdc++.h>
 using namespace std;
-#define ll long long
+#define ll long long                                        //! page no : 112.
 
 bool possible(vector<int> arr, int day, int k, int m){      //? this is required for both brute and optimal approach., this is basically asking if the chosen day is possible or not.
     int cnt = 0, no_of_boq = 0;                             //? no of boq is the number of boquets made on the chosen day. cnt is the number of roses bloomed on the chosen day.
@@ -42,21 +42,21 @@ int brute_force_approach(vector<int> arr,int k, int m){       // this is brute a
     return -1;                                              // if the chosen day is not possible, then we return -1.
 }
 
-int optimal_approach(vector<int> arr, int m, int k){
-    ll val = m * 1ll * k * 1ll;
+int optimal_approach(vector<int> arr, int m, int k){        //todo this is optimal approach that takes O(log(maxi - mini) * n) complexity that uses binary search.
+    ll val = m * 1ll * k * 1ll;                             //todo m * k is the number of roses bloomed on the chosen day if that is greater than n, then it is not possible.
     if (val > arr.size()) return -1;
-    int mini = INT_MAX, maxi = INT_MIN;
+    int mini = INT_MAX, maxi = INT_MIN;                     //todo again finding out the max and min elements in the array.
     for(int i = 0 ; i < arr.size();i++){
         mini = min(mini,arr[i]);
         maxi = max(maxi,arr[i]);
     }
-    int low = mini, high = maxi;
+    int low = mini, high = maxi;                            //todo low and high starts from minimum and maximum respectively.
     while(low <= high){
         int mid = (low+high)/2;
-        if(possible(arr,mid,m,k) == true) high = mid - 1;
-        else low = mid + 1;
+        if(possible(arr,mid,m,k) == true) high = mid - 1;   //todo if the chosen day is possible then we decrease the value of high to mid - 1.
+        else low = mid + 1;                                 //todo if the chosen day is not possible then we increase the value of low to mid + 1.
     }
-    return low;
+    return low;                                             //todo this is the answer.
 }
 
 
