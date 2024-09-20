@@ -9,7 +9,7 @@ int main() {
     unordered_map <int, string> s;
     unordered_map <int, int> v = {{1,1},{2,2},{3,3}};
     v[2]++;                                             // can increment the second element of the map using the key. this is useful in hasing problems.
-
+    for(auto m : v) cout << m.first << "->" << m.second << endl;
     for(int i = 0; i < 10; i++){
         m[i] = i;
     }
@@ -21,7 +21,7 @@ int main() {
     for(const auto& p : m) {
         cout << p.first << " " << p.second << endl;
     }
-    m.find(2); // find the element with key 2
+    if(m.find(2) != m.end()) cout << m[2] << " is present\n"; // find the element with key 2
     cout << "\n";
     cout << m.size() << endl; // gives the size of the map.
     m.clear(); // this would clear the whole map.
