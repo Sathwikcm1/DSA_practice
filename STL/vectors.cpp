@@ -1,3 +1,5 @@
+//? A vector is a dynamic array. it can be used to store any type of data. it uses 
+
 #include<bits/stdc++.h>                                     // this is related to StL vectors.
 using namespace std;
 
@@ -7,7 +9,7 @@ int main() {
     vector<int> v;  //? declaring a vector.
     vector<int> s{1,2,3,4,5};       // ? initializing a vector. can also do it like this or s = {1,2,3,4,5}; like this.
     for(int i = 0 ; i< 5; i++) cout << s[i] << " ";     //? printing the vector. can also do it using an iterator.
-    for(int i = 0; i < 10; i++) v.push_back(i);
+    for(int i = 0; i < 10; i++) v.push_back(i);             //? this is defalut way to insert elements in a vector.
     // we can also insert to a vector by using this ; 
     v.insert(v.begin(), 0); // inserting 0 at the beginning of the vector. or can insert at the end as well.
     v.insert(v.end(),69);

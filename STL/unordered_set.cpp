@@ -1,3 +1,4 @@
+//? An unordered set is a container where it stores element not in a particular order but they are all unique elements.
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -5,7 +6,9 @@ using namespace std;
 
 int main() {
     unordered_set<int> s;       // this is how we declare an unordered_set.
-    unordered_set<int> uset = {1, 2, 3, 4, 5}; // declaring an unordered_set and intializing it.
+    unordered_set<int> uset = {1, 2, 3, 3, 4, 5}; // declaring an unordered_set and intializing it.
+    for(auto it : uset) cout << it << " " ;
+    cout << endl;
     s.insert(1);               // this is how to insert in unordered_set.
     s.erase(s.begin());         // this line erases the first element.
     for(int i = 0; i< 10; i++) s.insert(i); // then we are adding the elements from 0 to 9.

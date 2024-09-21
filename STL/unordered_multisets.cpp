@@ -1,5 +1,7 @@
-#include<bits/stdc++.h> // this is agian , but this time we are using unordered_multiset, it is a container that stores elements in no particular order with keys and values.
+#include<bits/stdc++.h> 
 using namespace std;
+
+//? unordered_multiset is a container which contains elements in an unordered manner and elmenets can be repeated here. so simply put it is a container.
 
 #define ll long long
 

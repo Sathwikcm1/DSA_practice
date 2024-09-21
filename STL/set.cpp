@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-#define ll long long                        // time complexity for operations :  O(n).
+                                            //? A Collection of unique elements in a specific order.
+#define ll long long                        // time complexity for operations :  O(log n) for insertion,  deletion, searching and other operations.
 
 int main() {
     set <int> s;

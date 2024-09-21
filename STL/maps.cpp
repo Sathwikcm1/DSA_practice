@@ -1,4 +1,4 @@
-// map is a container that stores elements in sorted order with keys and values.
+//? map is a container that stores elements in sorted order with keys and values.
 #include<bits/stdc++.h>
 using namespace std;            // time complexity for the operations is O(log(n)).
 
@@ -14,8 +14,17 @@ int main() {
         v[i] = i;
     }
     for(auto it : v) cout << it.first << "->" << it.second << endl;
-
-    
+    cout << endl;
+    cout << "extra mod" << endl;
+    map <int,int> mew;
+    vector<int> some {1,2,3,4,5,5,2};
+    for(int  ele : some){
+        mew[ele]++;
+    }
+    for(auto it: mew) cout << it.first <<" ->" << it.second << endl;
+    for(auto it: mew){
+        if(it.second > 1) cout << it.first << "->" << it.second << endl;
+    }
     m.erase(1); // removing the element with key 1.
     m.clear(); // this would again erase everything in the map.
     return 0;

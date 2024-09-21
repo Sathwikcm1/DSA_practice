@@ -26,4 +26,4 @@ int main() {
     cout << m.size() << endl; // gives the size of the map.
     m.clear(); // this would clear the whole map.
     return 0;
-}   
+}
