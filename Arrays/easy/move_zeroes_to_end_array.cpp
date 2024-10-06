@@ -1,3 +1,4 @@
+//FIXME: the question is to move all the zeroes present in the array to last places of the array.
 #include<bits/stdc++.h>
 using namespace std;
 
