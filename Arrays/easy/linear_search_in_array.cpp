@@ -10,5 +10,6 @@ int main(){
   for(int i = 0 ; i < n ;i++) {
     if(arr[i] == k) cout << "The element is present." << endl;
   }
+  cout << "This is just a regular linear search. so this will take "<<n << " iterations of the loop. that will make it O(n) Time complexity. " << endl; 
   return 0;
 }
