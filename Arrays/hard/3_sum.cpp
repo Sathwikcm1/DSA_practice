@@ -6,7 +6,7 @@ using namespace std;                                //! page no : 75.
 
 vector<vector<int>> brute_approach(vector<int> arr, int n){         // this takes the time complexity to O(n^3) * O(logn). and space complexity to O(1).
     set<vector<int>> st;                // this is the set to store the triplets that sum up to zero.
-    for(int i = 0; i < n; i++){         
+    for(int i = 0; i < n; i++){        
         for(int j = i+1; j<n;j++){          
             for(int k =j+1; k<n;k++){           
                 if(arr[i] + arr[j]+arr[k] == 0){            // we check if the sum of the triplets is zero. if it is we add that to a temp vector, sort it and then add it to the set. 
