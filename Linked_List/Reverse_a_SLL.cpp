@@ -10,7 +10,28 @@ public:
     Node(int val) : data(val), next(nullptr) {}
 };
 
-//TODO: this is the function to reverse a singly linked list.
+
+//TODO: this function is about the brute force approach to reverse a single linked list
+Node* brute_force_approach(Node* head){
+  //NOTE: in this brute_force_approach we are basically taking a stack and put all the elements of the linked list into the stack.
+  //and then put them in the linked list in order and then return the linked list.
+
+  Node* temp = head;
+  stack<int> st;
+  while(temp){
+    st.push(temp->data);
+    temp = temp->next;
+  }
+  temp = head;
+  while(temp){
+    temp->data = st.top();
+    st.pop();
+    temp = temp->next;
+  }
+  return head;
+}
+
+//TODO: this is the function to reverse a singly linked list. Optimal approach.
 Node* reverseLinkedList(Node* head){
   Node* curr = head; //NOTE: this is used to traverse the linked list.
   Node* prev = nullptr; //NOTE: this represents the previous node.
@@ -48,5 +69,8 @@ int main() {
     cout << "Reversed List: ";
     printList(head);
 
+    head = brute_force_approach(head);
+    cout << "Reversed Linked list using brute_force_approach(stack)." << endl;
+    printList(head);
     return 0;
 }
