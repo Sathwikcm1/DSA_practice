@@ -50,11 +50,15 @@ Node* brute_force(Node* head){
 Node* optimal_approach(Node* head){
   Node* slow = head;
   Node* fast = head;
+  //NOTE: the reason we write fast!=nullptr and fast->next!= nullptr is because the linked list can be even or odd.
+  //if it is odd the fast->next will work as fast will be pointing to the last second before it becomes the nullptr itself.
   while(fast != nullptr && fast->next != nullptr){
    slow = slow->next;
    fast = fast->next->next;
   }
   return slow;
+  //NOTE: if slow is moving x/2 distance and fast is moving x distance , if there is a loop they will collide at some upcoming position.
+  //NOTE: can also return fast, cuz both will be pointing to the same node.
 }
 
 
