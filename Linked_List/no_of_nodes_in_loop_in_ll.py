@@ -44,3 +44,4 @@ ans = optimal_approach(head)
 print("So the number nodes in the loop of the linked list is : ", ans)
 if ans == -1:
     print("There was no loop.")
+
