@@ -4,12 +4,16 @@
 
 def is_Armstrong(n):
     og = n 
+    #NOTE: this is the original number copy. since the original will change after that while loop.
     sum = 0
     while n:
+        #NOTE: Last digit is the mod of the original number.
         ld = n % 10
+        #NOTE: sum is nothing but adding the cubes of each digit.
         sum += ld ** 3 
         n//=10
 
+        #NOTE: if the sum is equal to the original number we return true.
     if og == sum:
         return True
     else:
