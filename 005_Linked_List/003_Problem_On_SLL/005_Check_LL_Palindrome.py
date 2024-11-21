@@ -37,34 +37,26 @@ def reverse_linked_list(head):
     return new_head
 
 
-
-#TODO: story: in this we use the same slow and fast pointer to find out the middle node of the linked list.
-#once we do then we will reverse the second half of the linked list using middle node we just found out.
-# and then we check for each value, return true or false accordingly before that we have to reverse the linked list.
-def optimal_approach(head):
-    if not head or not head.next:
-        return True #TODO: this means empty linked is a palindrome.
-    
-    slow=head
-    fast=head
-    while fast and fast.next:
-        fast=fast.next.next
-        slow=slow.next
-    #NOTE: this is where we get the middle of the linked list, slow will be pointing to the middle of the linked list.
-    # so we reverse the other half from the slow.next, we reverse the linked list.
-    new_head = reverse_linked_list(slow.next)
-    first_half = head
-    second_half = new_head
-
-    while second_half:
-        if first_half.data != second_half.data:
-            reverse_linked_list(new_head)
-            return False
-        first_half=first_half.next
-        second_half=second_half.next
-    reverse_linked_list(new_head)
-    return True
-
+#     slow=head
+#     fast=head
+#     while fast and fast.next:
+#         fast=fast.next.next
+#         slow=slow.next
+#     #NOTE: this is where we get the middle of the linked list, slow will be pointing to the middle of the linked list.
+#     # so we reverse the other half from the slow.next, we reverse the linked list.
+#     new_head = reverse_linked_list(slow.next)
+#     first_half = head
+#     second_half = new_head
+#
+#     while second_half:
+#         if first_half.data != second_half.data:
+#             reverse_linked_list(new_head)
+#             return False
+#         first_half=first_half.next
+#         second_half=second_half.next
+#     reverse_linked_list(new_head)
+#     return True
+#
 
 
 def print_linked_list(head):
@@ -73,6 +65,40 @@ def print_linked_list(head):
         print(temp.data, end=" ")
         temp = temp.next
     print()
+
+
+
+#TODO: story: in this we use the same slow and fast pointer to find out the middle node of the linked list.
+#once we do then we will reverse the second half of the linked list using middle node we just found out.
+# and then we check for each value, return true or false accordingly before that we have to reverse the linked list.
+# def optimal_approach(head):
+#     if not head or not head.next:
+#         return True #TODO: this means empty linked is a palindrome.
+#
+
+def optimal_approach(head):
+    if not head or not head.next:
+            return True
+    slow=head
+    fast=head
+    while fast and fast.next:
+        slow=slow.next
+        fast=fast.next.next
+
+    prev  = None
+    while slow:
+        temp = slow.next
+        slow.next = prev
+        prev=slow
+        slow=temp
+
+    left,right=head,prev
+    while right:
+        if left.data != right.data:
+            return False
+        left=left.next
+        right= right.next
+    return True
 
 def main():
     # Create a linked list with
@@ -100,25 +126,3 @@ def main():
 if __name__ == "__main__":
     main()
 
-# def optimal_approach(head):
-#     if not head or not head.next:
-#             return True
-#         slow,fast = head,head
-#         while fast and fast.next:
-#             slow=slow.next
-#             fast=fast.next.next
-#
-#         prev  = None
-#         while slow:
-#             temp = slow.next
-#             slow.next = prev
-#             prev=slow
-#             slow=temp
-#
-#         left,right=head,prev
-#         while right:
-#             if left.val != right.val:
-#                 return False
-#             left=left.next
-#             right= right.next
-#         return True
