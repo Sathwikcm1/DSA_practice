@@ -25,12 +25,45 @@ def brute_force_approach(head):
 #TODO: the time complexity is O(2*N).
 
 
+#TODO: this works using recursion.
+def reverse_linked_list(head):
+    if not head or not head.next:
+        return head
+
+    new_head = reverse_linked_list(head.next)
+    front = head.next
+    front.next = head
+    head.next = None
+    return new_head
 
 
 
+#TODO: story: in this we use the same slow and fast pointer to find out the middle node of the linked list.
+#once we do then we will reverse the second half of the linked list using middle node we just found out.
+# and then we check for each value, return true or false accordingly before that we have to reverse the linked list.
+def optimal_approach(head):
+    if not head or not head.next:
+        return True #TODO: this means empty linked is a palindrome.
+    
+    slow=head
+    fast=head
+    while fast and fast.next:
+        fast=fast.next.next
+        slow=slow.next
+    #NOTE: this is where we get the middle of the linked list, slow will be pointing to the middle of the linked list.
+    # so we reverse the other half from the slow.next, we reverse the linked list.
+    new_head = reverse_linked_list(slow.next)
+    first_half = head
+    second_half = new_head
 
-
-
+    while second_half:
+        if first_half.data != second_half.data:
+            reverse_linked_list(new_head)
+            return False
+        first_half=first_half.next
+        second_half=second_half.next
+    reverse_linked_list(new_head)
+    return True
 
 
 
@@ -60,6 +93,32 @@ def main():
     else:
         print("The linked list is not a palindrome.")
 
+    if optimal_approach(head):
+        print("The linked list is a Palindrome.")
+    else:
+        print("The linked list is not a palindrome.")
 if __name__ == "__main__":
     main()
 
+# def optimal_approach(head):
+#     if not head or not head.next:
+#             return True
+#         slow,fast = head,head
+#         while fast and fast.next:
+#             slow=slow.next
+#             fast=fast.next.next
+#
+#         prev  = None
+#         while slow:
+#             temp = slow.next
+#             slow.next = prev
+#             prev=slow
+#             slow=temp
+#
+#         left,right=head,prev
+#         while right:
+#             if left.val != right.val:
+#                 return False
+#             left=left.next
+#             right= right.next
+#         return True

@@ -40,7 +40,7 @@ def brute_force_approach(head):
 #TODO: this is optimal_approach of this problem.
 #this will use the famous algorithm known as tortoise and hare method.
 #story: the fast pointer will move by two nodes and slow will move by one node.
-
+#Time complexity is O(N).
 
 
 def optimal_approach(head):

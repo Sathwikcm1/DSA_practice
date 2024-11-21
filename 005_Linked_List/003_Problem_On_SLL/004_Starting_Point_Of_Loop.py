@@ -12,7 +12,7 @@ def brute_force_approach(head):
     bin_dict = {}
     #NOTE: initialising the dictionary.
     temp = head
-
+    #NOTE: can also use set instead of dictionary it is not obligatory that we have to use dictionary here.
     while temp:
         #NOTE: checking if the current node is already in the dictionary or not.
         if temp in bin_dict:

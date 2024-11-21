@@ -22,12 +22,14 @@ def brute_force_approach(head):
         temp=temp.next
     return False 
 #TODO: the time complexity is O(N * 2 * log(N)).
+# the O(n) comes from traversing the list and 2*log(N) for insertion and searchign in unordered_set.
 
 
 
 
 #TODO: this is the optimal solution: this will take O(N) time complexity.
 # Again this is the same hare tortoise solution. a slow pointer and a fast pointer.
+# story: we use the same fast and slow pointers, while traversing if fast == slow, then we can say that the give linked list has a cycle in it.
 def optimal_approach(head):
     slow = head
     fast = head
