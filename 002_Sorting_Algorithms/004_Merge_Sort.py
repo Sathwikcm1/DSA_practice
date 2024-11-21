@@ -29,6 +29,8 @@ def merge(arr,low,mid,high):
         temp.append(arr[right])
         right +=1
 
+    #TODO: since the low values is updated, low is now pointing to mid element.
+    # that's why if we subtract temp[i - low] that will give use the first element of the temp list which we can assign it to the original array.
     for i in range(low,high+1):
         arr[i] = temp[i-low]
 
