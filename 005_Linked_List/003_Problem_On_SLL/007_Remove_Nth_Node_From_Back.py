@@ -54,5 +54,8 @@ head.next.next = Node(arr[2])
 head.next.next.next = Node(arr[3])
 head.next.next.next.next = Node(arr[4])
 
+print("Original List:")
+printLL(head)
+print("After altering:")
 head = brute_force(head,N)
 printLL(head)
