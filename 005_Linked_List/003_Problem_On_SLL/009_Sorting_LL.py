@@ -22,7 +22,7 @@ def brute_force(head):
 
     return head
 
-
+#NOTE: time complexity of this algorithm takes O(N)(pulling all the nodes) + O(N*log N)(sorting the array.) + O(N)(putting all the nodes back).
 
 
 
@@ -37,7 +37,7 @@ def print_linked_list(head):
     temp = head
     while temp is not None:
         # Print the data of the current node
-        print(temp.data, end=" ")
+        print(temp.val, end=" ")
         # Move to the next node
         temp = temp.next
     print()
