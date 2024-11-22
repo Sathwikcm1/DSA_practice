@@ -43,6 +43,26 @@ def printLL(head):
     print()
 
 
+#TODO:this is the optimised version of the above brute force which uses the same hare and tortoise algorithm.
+#Story:two pointers fast and slow, first the fast pointer is moved "N" nodes from the head. And then they both start moving with the same pace until fast reaches end of list. 
+#when it reaches the end of the list slow pointer is n nodes behind fast, which is exactly what we wanted we can then delete that node.
+def optimal_approach(head,N):
+    fast = head
+    slow = head
+    for i in range(N):
+        fast = fast.next
+    #NOTE:if the N is the size of the list, delete the head and return the rest of the list.
+
+    if fast is None:
+        return head.next
+    while fast.next :
+        fast=fast.next
+        slow=slow.next
+
+    delNode=slow.next
+    slow.next=slow.next.next
+    delNode=None
+    return head
 
 
 
@@ -58,4 +78,10 @@ print("Original List:")
 printLL(head)
 print("After altering:")
 head = brute_force(head,N)
+printLL(head)
+
+print("Before optimal deletion:")
+printLL(head)
+print("After optimal deletion:")
+head = optimal_approach(head,N)
 printLL(head)
