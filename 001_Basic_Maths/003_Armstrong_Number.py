@@ -1,4 +1,4 @@
-#FIXME: Armstrong number is a number when cube the digits of the given number and add them
+#FIXME: Armstrong number is a number when the digits of the given number are raised to power of number of digits and add them
 # the result will be the number itself
 # example: 371 = 3^3 + 7^3 + 1^3
 
