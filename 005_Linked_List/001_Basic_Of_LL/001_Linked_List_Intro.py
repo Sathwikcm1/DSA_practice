@@ -7,6 +7,7 @@ class Node:
         self.next=next1
 #TODO: self is a just a reference to the current object of the class.
 #it can be of any name not just self.
+#the point of writing if is to confirm this program or script is running directly and not imported and running.
 if __name__ == "__main__":
     print("Finalyy reached Linked List penchoo..")
     arr = [2,3,4,6,6,7]
@@ -15,4 +16,4 @@ if __name__ == "__main__":
     y = Node(arr[0])
     print(y) #NOTE: this will print the memory location address.
     print(y.data) #NOTE: this will print the data of the first element of the array which is 2.
-    print(y.next)#NOTE: this will print the pointer to the next node, which is None as of now.
+    print(y.next)#note: this will print the pointer to the next node, which is none as of now.
