@@ -15,6 +15,7 @@ def brute_force(head):
     while temp:
         cnt+=1
         temp=temp.next
+    #NOTE: the reason we didn't do cnt//2 + 1, because we gonna have to delete the middle node, we have to go one node behind middle node
     res = cnt//2
     temp = head
     while temp:
@@ -48,7 +49,7 @@ def optimal(head):
     prev=None
     
     while fast and fast.next:
-        prev=slow
+        prev=slow #NOTE: because slow will be pointing to the middle node itself.
         slow=slow.next
         fast=fast.next.next
     

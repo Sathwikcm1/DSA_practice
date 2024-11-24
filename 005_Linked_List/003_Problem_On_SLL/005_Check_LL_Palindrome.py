@@ -75,7 +75,9 @@ def print_linked_list(head):
 #     if not head or not head.next:
 #         return True #TODO: this means empty linked is a palindrome.
 #
-
+#TODO: story: we reverse the linked list from the middle, excluding the middle node.
+#and then we compare the first half and the second half of the linked list if they are same values or not.
+#and the second while loop will run till slow is none.
 def optimal_approach(head):
     if not head or not head.next:
             return True
@@ -84,14 +86,14 @@ def optimal_approach(head):
     while fast and fast.next:
         slow=slow.next
         fast=fast.next.next
-
-    prev  = None
+    #NOTE: now slow is pointing to the middle node of the linked list.
+    prev  = None #NOTE: this is used for reversing the linked list.
     while slow:
         temp = slow.next
         slow.next = prev
         prev=slow
         slow=temp
-
+    #NOTE: left represents head of the first half of the linked list. Right represets the other half head, right next to the middle node.
     left,right=head,prev
     while right:
         if left.data != right.data:

@@ -3,7 +3,7 @@
 #1 --> 2 --> 3 --> 4 --> null
 #List after segregation (Even first, Odd next):
 #2 --> 4 --> 1 --> 3 --> null
-
+#this is based on the index of the linked list. Not the value.
 
 class Node:
     def __init__(self,val,next=None):
@@ -66,7 +66,7 @@ def segregate_odd_even(head):
     odd = head
     even = head.next
     even_head = even #TODO: this is stored because after all the odd and even joining, this is what is used to join both odd and even ones.
-
+    #NOTE: making seperate list of odd index nodes and even index nodes.
     while even and even.next:
         odd.next=even.next
         odd = odd.next

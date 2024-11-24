@@ -16,7 +16,7 @@ def brute_force_approach(head):
         return head
     
     temp = head
-    cnt = 0
+    cnt = 0 #NOTE: if you take count as 0, you have to increment it before temp=temp.next
     
     while temp:
         cnt+=1

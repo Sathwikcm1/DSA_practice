@@ -31,6 +31,9 @@ def print_linked_list(head):
         temp = temp.next
     print()
 
+#TODO: story: in this we changing the pointers of each node. make a copy of next_node to the current node.
+# and then make the curr.next as previous node and make the previous node as the current node and then make the current node as the copy of the next node.
+
 def optimal_approach(head):
     curr = head
     prev_node =None

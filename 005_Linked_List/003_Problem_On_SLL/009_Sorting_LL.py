@@ -26,7 +26,7 @@ def brute_force(head):
 
 
 
-
+#TODO: the optimal approach was to take out the whole linked list nodes just like using merge sort.
 
 
 
