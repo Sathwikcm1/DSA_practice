@@ -49,3 +49,15 @@ if __name__ =="__main__":
     print("The element poped is : ",s.pop())
     print("The size of the stack after deleting an element.",s.size_s())
 
+#NOTE: A Stack is a linear Data structure that stores elements in a specific order.
+#It follows the LIFO principle.
+#Basic operations: push,pop,top/peek, size, isEmpty.
+#Only top most element is accessible.
+#dynamic in nature it grows or shrinks based on the operations.
+# Internally stacks uses either arrays(static size) or linked lists(dynamic size.)
+# Evaluating postfix (Applications)
+# expression conversion
+# function call management
+# undo/redo functionality
+# parenthesis matching
+# memory management, DFs, 
