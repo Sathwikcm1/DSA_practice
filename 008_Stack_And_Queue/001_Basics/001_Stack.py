@@ -60,4 +60,4 @@ if __name__ =="__main__":
 # function call management
 # undo/redo functionality
 # parenthesis matching
-# memory management, DFs, 
+# memory management, DFS. 
