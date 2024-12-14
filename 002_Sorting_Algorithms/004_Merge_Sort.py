@@ -37,3 +37,4 @@ def merge(arr,low,mid,high):
 arr = [3,2,4,5,2,6,8,1]
 merge_sort(arr,0,len(arr)-1)
 print(*arr)
+#NOTE: adding that asterisk will open the list and print the elements of the list.
