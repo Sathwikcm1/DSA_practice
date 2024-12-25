@@ -13,10 +13,15 @@ class Queue:
         self.output= LifoQueue()
 
     def push(self,data):
+        #TODO: so there are two queues here one is input and the other one is output.
+        # So input is the actual LifoQueue used to push the elements into the queue. But output is used for actually transferring all the elements before and after the pushing of the elements.
+        #NOTE: before pushing the give item into the input, we transfer all the elements in the input queue to the output queue. So now the input queue is empty.
         while not self.input.empty():
             self.output.put(self.input.get())
         print("The element pushed is ",data)
+        #NOTE: Here we push the given element to the input queue, now the input queue only contains the only queue.
         self.input.put(data)
+        #NOTE: Here we are again putting back all the elements back to the input elements so that the all the other elements are added after the given element.
         while not self.output.empty():
             self.input.put(self.output.get())
 
@@ -25,6 +30,7 @@ class Queue:
         if self.input.qsize() == 0:
             print("Stack is empty")
             exit(0)
+        #NOTE: since the input queue is original queue , we do get() to that queue only.
         val=self.input.get()
         return val
     
