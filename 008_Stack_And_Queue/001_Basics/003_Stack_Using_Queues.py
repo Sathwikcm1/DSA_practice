@@ -1,4 +1,10 @@
 #FIXME: This question is basically implementing stacks but using queues from module queue and class Queue.
+#TODO: This is where we import the queue module and in that particulary Queue class.
+# so the queue module contains several classes that implement different types of queue datastructures.
+# The first one is Queue, FIFO principle, Tread safe(meaning it can be used safely in multi threaded programming), methods are put(item), get(), empty(), full() and qsize().
+# The second one  is LifoQueue(LIFO) also thread safe. Methods are similar to Queue.
+# The third one is Priority Queue, A queue where items are retrieved in priority order(lowest by default).
+# Other important modules for DSA: collections(deque,counter,defaultdict), heapq, bisect, array, math random, itertools etc.
 from queue import Queue
 
 class Mystack:
