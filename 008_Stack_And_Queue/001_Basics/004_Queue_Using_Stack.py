@@ -51,4 +51,3 @@ if __name__ == "__main__":
     q.push(5)
     print("The top of the queue is", q.Top())
     print("The size of the queue is", q.size())
-#mew
