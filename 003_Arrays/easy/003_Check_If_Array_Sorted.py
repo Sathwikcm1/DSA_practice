@@ -1,7 +1,7 @@
 #FIXME: we have to check if the given array is sorted or not.
-
 def brute_force(arr,n):
     #NOTE: This is obviously brute_force solution which takes O(N) time complexity.
+
     # we basically loop through the array starting from index 1, if arr[i] is less than the previous element arr[i-1] we return false otherwise true.
     for i in range(1,n):
 
