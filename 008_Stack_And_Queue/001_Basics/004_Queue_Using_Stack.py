@@ -38,10 +38,10 @@ class Queue:
         if self.input.qsize() == 0:
             print("Stack is empty")
             exit(0)
-        return self.input.queue[-1]
+        return self.input.queue[-1] #NOTE: This is to access the last element of the queue.
     
     def size(self):
-        return self.input.qsize()
+        return self.input.qsize() #NOTE: That functions will return the size of the underlying queue size.
 
 if __name__ == "__main__":
     q = Queue()
