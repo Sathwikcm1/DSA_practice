@@ -59,5 +59,3 @@ if __name__ == "__main__":
     print("Stack size: ", s.stack_size())
     print("Stack empty or not?", s.stack_is_empty())
     print("Stacks top element: ",s.stack_peek())
-
-
