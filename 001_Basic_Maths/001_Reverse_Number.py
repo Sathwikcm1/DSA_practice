@@ -1,4 +1,3 @@
-
 #FIXME: Just return the reversed given number
 # for example: x = 123 , return 321.
 
