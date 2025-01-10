@@ -27,4 +27,4 @@ def optimal(arr):
 arr = [1,2,3,4,5]
 optimal(arr)
 print(arr)
-
+#NOTE: The time complexity of optimal is O(N.) single iteration.
