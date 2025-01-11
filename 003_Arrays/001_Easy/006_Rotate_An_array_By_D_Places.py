@@ -38,7 +38,7 @@ def optimal(arr,k):
     reverse(arr,n-k,n-1)
     #NOTE: Now reverse the whole array after reversing those halves.
     reverse(arr,0,n-1)
-
+#TODO: The time complexity of the optimal approach is O(N).
 
 
 

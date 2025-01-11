@@ -30,7 +30,6 @@ void optimal(vector<int> arr, int k, int n){ // time complexity: O(n).
   reverse(arr, 0 , n - k - 1); // TODO : rotate the array till the kth place.
   reverse(arr, n - k, n - 1); //TODO: rotate the rest of the array from the kth place to the end of the array.
   reverse(arr, 0 , n - 1); //TODO: then reverse the whole array. which will give our answer.
-
 }
 
 int main(){
