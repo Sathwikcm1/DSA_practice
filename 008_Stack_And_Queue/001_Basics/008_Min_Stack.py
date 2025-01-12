@@ -38,7 +38,6 @@ min_stack.push(3)
 min_stack.push(5)
 print(min_stack.getMin())  # Output: 3
 min_stack.push(2)
-min_stack.push(1)
 print(min_stack.getMin())  # Output: 1
 min_stack.pop()
 print(min_stack.getMin())  # Output: 2
