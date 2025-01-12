@@ -33,7 +33,6 @@ class Minstack():
 
 
 
-
 min_stack = Minstack()
 min_stack.push(3)
 min_stack.push(5)
