@@ -32,6 +32,7 @@ class Minstack():
         return None
 
 
+#TODO: should have written a main function here.
 
 min_stack = Minstack()
 min_stack.push(3)
