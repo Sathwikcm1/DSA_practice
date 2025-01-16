@@ -6,13 +6,17 @@ def brute(arr,n):
     #NOTE: The brute force approach is to sort the array which will take O(n logn) time complexity 
     #And then we have to check if the index has the same number otherwise we return the index.
     arr.sort()
-    for i in range(1,n):
+    for i in range(1,n): #NOTE: it starts from 1, because that's where numbering is starting, 1,2,3..., not 0,1,2,3...
         if i!=arr[i-1]:
             return i
     return -1
 #NOTE: The total time complexity is O(N log N)
 
+
+
+
 #TODO: Still not the optimal one, we can just use hash_array instead of sorting the array itself we can use hashmap to record the count of the each number in given array.
+#FIXME: this is hash array not hashmap, that is why we are not using any .get method or anything.
 def Using_Hash(arr,n):
     hash_array=[0]*(n+1) #NOTE: this is initializing array with zeroes with the size of the given array.
 
