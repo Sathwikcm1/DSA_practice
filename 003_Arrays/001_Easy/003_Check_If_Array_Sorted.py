@@ -9,6 +9,7 @@ def brute_force(arr,n):
             drop_count += 1 
             if drop_count > 1:
                 return False 
+    #NOTE: drop_count is used for the rotated array purpose. drop_count should be one if it is more than that we return false.
     return True 
 
 
