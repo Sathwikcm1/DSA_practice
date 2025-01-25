@@ -21,3 +21,4 @@ if __name__ == "__main__":
     arr1 = [2 ,3 ,4, 5, 6, 10]
     print("The largest element in the given array is :", brute_force(arr1))
     print("The largest element in the given array using optimal approach: ", optimal(arr1))
+    print(max(arr1)) #FIXME: the simplest possible way to return a maximum element of a list.

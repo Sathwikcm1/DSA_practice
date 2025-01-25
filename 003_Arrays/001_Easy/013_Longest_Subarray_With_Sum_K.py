@@ -2,7 +2,7 @@
 #Input Format: N = 3, k = 5, array[] = {2,3,5} , where n is the size of the array and the k is the sum .
 #Result: 2
 #Explanation: The longest subarray with sum 5 is {2, 3}. And its length is 2.
-
+#try example, arr=[5,2,3,1,9] , k = 10, n = 5.
 
 from typing import List #this is used to type which type is being accepted as a parameter and which data type is to be returned. This is called type hinting. Type hinting is used to specify the types of the variables.
 
@@ -81,6 +81,7 @@ def better_two(arr:[int],k:int)->int:
 
 
 
+#FIXME: This only works if there are positive numbers in the array. This doesn't works if there are negative numbers too in the array.
 #TODO: This is the optimal solution using two pointers:
 #story: so the two pointers are left and right which initially pointing to the same 0th index.
 # then we have maxlen and sum initialised with zeroth element, for the same purposes. 
@@ -105,6 +106,8 @@ def optimal(arr:[int],k:int)->int:
             sum += arr[right]
 
     return maxlen #NOTE: at the end we return the maxlen.
+#FIXME: time complexity: O(n).
+
 
 
 if __name__ == "__main__":

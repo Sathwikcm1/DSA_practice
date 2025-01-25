@@ -25,12 +25,14 @@ def Using_Hash(arr,n):
         hash_array[arr[i]] += 1 
 
     #NOTE: In here again, we go through the hash_array to find which one has zero has it's value. and we return that index.
-    for i in range(1, n+1):
+    for i in range(1, n+1): #NOTE: again , the index starts from 1, because the numbering starts from inside the zero , numbering means elements in the array starts from 1.
         if hash_array[i] == 0:
             return i 
     return -1
 
 
+#TODO: story of optimal:
+# we will use the sum of all the elements in the array, which will be compared to actual_sum of the numbers from 1 to n-1.
 def Optimal(arr,n):
 #NOTE: Using the power of friendship, Nah using meth.
     total_sum = (n * (n+1)) // 2
@@ -60,6 +62,3 @@ if __name__ == "__main__":
         print("The missing number in the array is: ", ans3, ".")
     else:
         print("There was no missing number in the given array.")
-
-
-

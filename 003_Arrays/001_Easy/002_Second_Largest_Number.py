@@ -14,7 +14,7 @@ def brute_force(arr):
     #NOTE: so at this point we have both the smallest and the largest element in the array , now we want to find the second smallest and second largest elements of the array.
     arr.sort()
 
-    for i in range(len(arr) - 2, -1 , -1):
+    for i in range(len(arr) - 2, -1 , -1): #range(start,end,gap), ofcourse except the -1th index of the array.
         if arr[i] != largest:
             s_largest = arr[i]
             break

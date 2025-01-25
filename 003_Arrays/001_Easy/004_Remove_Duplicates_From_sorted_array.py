@@ -5,6 +5,7 @@ from typing import List #NOTE: this is type hint, this is used to write it like 
 
 #TODO: Story of brute_force: we are putting all the elements into a set data structure which cannot contain duplicates, so it will get rid of the duplicates, now we can copy the elements from the set and put it to the original array.
 def brute_force(arr: List[int]) -> int:
+    #NOTE: we are basically return the lenght of the new array that contains only unique elements.
     st = set()
     for num in arr:
         st.add(num)

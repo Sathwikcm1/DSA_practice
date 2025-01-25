@@ -14,6 +14,7 @@ def brute_force(arr):
         arr[i] = temp[i]
     arr[n-1] = first_e
 #NOTE: this will take the time complexity of O(n).
+#NOTE: SC: O(N).
 
 #TODO: copy the first element to a variable and then move all the elements to one place behind, at the end add the first element.
 
@@ -27,4 +28,5 @@ def optimal(arr):
 arr = [1,2,3,4,5]
 optimal(arr)
 print(arr)
-#NOTE: The time complexity of optimal is O(N.) single iteration.
+#NOTE: The time complexity of optimal is O(N.) single iteration. but the space complexity is improved.
+#NOTE: SC : O(1).
