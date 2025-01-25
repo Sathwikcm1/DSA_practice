@@ -1,4 +1,4 @@
-#FIXME: Example 1:
+#FIXME: Example 1:                              page no : 01 and 02 in the new book.
 #Input Format: N = 3, k = 5, array[] = {2,3,5} , where n is the size of the array and the k is the sum .
 #Result: 2
 #Explanation: The longest subarray with sum 5 is {2, 3}. And its length is 2.
