@@ -1,12 +1,13 @@
 #FIXME: Example 1:
-#Input Format: N = 3, k = 5, array[] = {2,3,5}
+#Input Format: N = 3, k = 5, array[] = {2,3,5} , where n is the size of the array and the k is the sum .
 #Result: 2
 #Explanation: The longest subarray with sum 5 is {2, 3}. And its length is 2.
 
 
-from typing import List
+from typing import List #this is used to type which type is being accepted as a parameter and which data type is to be returned. This is called type hinting. Type hinting is used to specify the types of the variables.
 
 #TODO: This is the story of the brute_force approach:
+#so we are basically finding the subarrays using the first two for loops and then we are adding the elements inside the for loops using the third for loop.
 # we have 3 loops here, first outer loop is the starting index of the sub array and the next inner loop is the ending index of the sub array.
 # and the inner most loop is for calculating the sum of that partiuclar sub array, after caclulating we check if it is equal to target or not.
 # 
@@ -48,6 +49,11 @@ def better_approach(arr:[int],k:int)->int:
 
 
 #TODO: Next better approach is to hashmap.
+#NOTE: hashmap contains {sum,index}.
+#TODO:
+#first we will declare all the variables such as hashmap, sum, maxlen. sum is to calculate the sum of the subarray. and then we have the maxlen which is the result that we to return at the end.
+#and then we have one for loop going through that we will be adding each element from the array to the sum variable, we will check if the sum is equal to the k, if it is we put that in maxlen, otherwise we will calculate the remaining by, sum-k and then we check if the rem is in there in the hashmap.
+#if the rem is in hashmap we calculate the length. if the rem also is not present in the map and then we will add the sum and the index to the hashmap.
 
 def better_two(arr:[int],k:int)->int:
     n = len(arr)
@@ -76,14 +82,29 @@ def better_two(arr:[int],k:int)->int:
 
 
 #TODO: This is the optimal solution using two pointers:
+#story: so the two pointers are left and right which initially pointing to the same 0th index.
+# then we have maxlen and sum initialised with zeroth element, for the same purposes. 
 def optimal(arr:[int],k:int)->int:
     n = len(arr)
     left, right = 0,0 #NOTE: these are the pointers.
-    sum = a[0] #NOTE: sum will be initiated to the first element in the array.
-    maxLen = 0
+    sum = arr[0] #NOTE: sum will be initiated to the first element in the array.
+    maxlen = 0
     while right < n:
-        while left <= right and sum >k:
-            
+        while left <= right and sum >k: #NOTE: this is the not the first logic here, go to line 99 or 100th line.
+            #NOTE: this is only applied when the sum value is greater than k, we need reduce the size of the subarray so we move the left pointer by one.
+            sum -= arr[left]
+            left+=1 
+
+        #NOTE: this is just a normal check if it is equal to k or not.
+        if sum == k:
+            maxlen = max(maxlen, right-left+1)
+
+        #NOTE: this is where the logic starts from the first. we increment the right pointer first and then we check if right is still less than or not , if it and then we add the current arr[right] element to sum.
+        right+=1 
+        if right < n:
+            sum += arr[right]
+
+    return maxlen #NOTE: at the end we return the maxlen.
 
 
 if __name__ == "__main__":
@@ -95,4 +116,6 @@ if __name__ == "__main__":
     print(ans1)
     ans3 = better_two(arr,k)
     print(ans3)
+    ans4 = optimal(arr,k)
+    print(ans4)
 
