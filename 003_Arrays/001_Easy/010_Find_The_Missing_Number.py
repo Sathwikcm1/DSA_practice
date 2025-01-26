@@ -5,13 +5,13 @@
 def brute(arr,n):
     #NOTE: The brute force approach is to sort the array which will take O(n logn) time complexity 
     #And then we have to check if the index has the same number otherwise we return the index.
-    arr.sort()
+    arr.sort() #NOTE: this will execute timsort algorithm, it is dervied from merge sort. so time complexityh is O(n logn)
     for i in range(1,n): #NOTE: it starts from 1, because that's where numbering is starting, 1,2,3..., not 0,1,2,3...
-        if i!=arr[i-1]:
+        if i!=arr[i-1]: #HACK: so this for loop will take almost O(n).
             return i
     return -1
 #NOTE: The total time complexity is O(N log N)
-
+ 
 
 
 

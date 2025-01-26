@@ -53,11 +53,13 @@ def better_solution_using_hashmap(arr):
             #NOTE: if the key is not present in the dictionary we will assign 1 to the value.
         else:
             count[num] = 1
+            #HACK: this above for loop will take around O(n).
 
     #NOTE: we check if the value of the key is one or not , if it is we return the key, which is num.
     for num in count:
         if count[num] == 1:
             return num
+    #HACK: this for loop for the worst case will again take O(n), so total will be O(2n).
 
     return -1
 
@@ -72,6 +74,7 @@ def optimal(arr):
     for num in arr:
         xorr ^= num 
     return xorr
+#HACK: this will take around O(n).
 #NOTE: if the array length is even the xorr will return 0, in which case we have to check that.
 
 if __name__ == "__main__":
