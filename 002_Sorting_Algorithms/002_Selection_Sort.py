@@ -1,3 +1,6 @@
+#FIXME: This selection sort algorithm , basically divides the input list into sorted and unsorted region.
+#It repeatedly selects the smallest element from the unsorted region and moves it to the end of the sorted region.
+#Time complexity: O(n2) for all cases.
 def selection_sort(arr):
     n = len(arr)
     #NOTE: this has time complexity of O(n^2).

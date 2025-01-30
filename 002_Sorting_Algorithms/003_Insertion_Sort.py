@@ -1,3 +1,5 @@
+#FIXME: insertion_sort basically builds a sorted array one element at a time by repeatedly taking the next element from the unsorted potion and inserting it into the right position.
+#Time complexity: O(n) best case, O(n^2) for both remaining.
 def insertion_sort(arr):
     n = len(arr)
     #NOTE: goes from 1 to n-1.
