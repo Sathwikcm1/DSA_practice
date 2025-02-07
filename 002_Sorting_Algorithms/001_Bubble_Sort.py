@@ -6,7 +6,7 @@ def bubble_sort(arr):
 
     n = len(arr)
     for i in range(n):
-        #TODO: the inner loop don't have to go till n-1 because the last elements will already be sorted.
+        #TODO: the inner loop don't have to go till n-1 because the last elements will already be sorted for each ith iteration.
         #NOTE: i is given here, because it will be coming from the end, no if we are subtracting i from n.
         for j in range(n-i-1):
             if arr[j] > arr[j+1]:
