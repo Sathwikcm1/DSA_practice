@@ -37,20 +37,28 @@ def optimal(s:str)->int:
 
     for r in range(len(s)): #NOTE: r is the right pointer here.
         if s[r] in hm and hm[s[r]] >= l: #NOTE: l is only updated if the s[r] is present in the current substring(second if condition).
-            l = hm[s[r]] + 1
+            l = hm[s[r]] + 1 #NOTE: Then the l is updated to the next index of the s[r] in the hash_map to avoid repeatation again.
             
-        curr_len = r - l + 1
-        maxLen = max(maxLen,curr_len)
+        curr_len = r - l + 1 #NOTE: Calculating the curr_len of substring, +1 because of array indexing.
+        maxLen = max(maxLen,curr_len) #NOTE: updating the maxLen.
 
-        hm[s[r]] = r
+        hm[s[r]] = r #NOTE: if none of those above happened that means the char, or s[r] is not present in the hash_map so we add that to the hash_map.
     return maxLen
+#HACK: This takes the time complexity as O(N). linear time complexity and space complexity is O(len(s)).
+
 
 
 s = 'abcabcbb'
-print('The lenght of the substring is : ',optimal(s))
+print('The lenght of the substring is : ',brute(s))
+print('The lenght of the substring using optimal is : ',optimal(s))
 
 
 
 
 #HACK: Notes:
 #the sliding window is a special application of two pointer approach.
+#it involves finding a subarray that satisfies a certain condition. 
+#the key is to maintain a "Window" represented by two pointers left and right that slides through the array.
+
+
+#TODO: This problem longest non repeated substring is used in text compression algorithms, plagiarism detection algorithms.
