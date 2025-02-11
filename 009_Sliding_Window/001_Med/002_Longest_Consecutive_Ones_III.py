@@ -47,8 +47,8 @@ def optimal(nums:[int],k:int) -> int:
 
         #NOTE: if zero count is greater than what it is suppose to be , we give a loop which basically shrinkens the window by incrementing the left pointer.
         while zero_count > k:
-            if nums[left] == 0:
-                zero_count -= 1
+            if nums[left] == 0: #NOTE: if the left pointing number is zero we will increment left and then windows will become smaller.
+                zero_count -= 1 #NOTE: obv this also changed accordingly.
             left += 1
         maxLen = max(maxLen,right-left + 1)
     return maxLen
