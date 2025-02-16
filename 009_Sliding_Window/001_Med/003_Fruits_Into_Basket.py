@@ -4,7 +4,11 @@
 #Input: arr[]= [2, 1, 2]
 #Output: 3
 #Explanation: The entire array [2, 1, 2] contains at most two distinct integers (2 and 1). Hence, the length of the longest subarray is 3.
-#FIXME: so we gotta find maximum length of a subarray with atmost two types of numbers.
+#example 2:
+# Input: arr[] = [3, 1, 2, 2, 2, 2]
+# Output: 5
+# Explanation: The longest subarray containing at most two distinct integers is [1, 2, 2, 2, 2], which has a length of 5. The subarray starts at the second element 1 and ends at the last element. It contains at most two distinct integers (1 and 2).
+# #FIXME: so we gotta find maximum length of a subarray with atmost two types of numbers.
 
 
 #TODO: The brute force solution, we go through every single subarray and then check if the subarray element is limited to two only using a set data structure. if the length of the set is greater than 2, we skip and continue.
@@ -28,26 +32,35 @@ def brute(nums:list[str]) -> int:
 #HACK : This will take O(N^2) Time complexity since there are two for loops.
 #HACK: This will take O(3), as space complexity since the max numbers in the set is only 3.
 
+
+
+
+
+
 #TODO: This obviosly uses sliding window protocol, 
-def optimal(fruits: list[int]) -> int:
-    left = 0
-    fruit_count = {}
+#NOTE: in this optimal version we use a dictionary rather than using a set data structure.
+def optimal(fruits: list[str]) -> int:
+    left = 0 #NOTE: this is the left pointer for the window.
+    fruit_count = {} #NOTE: This is a dictionary, that counts the frequency of each type of fruit.
     n = len(fruits)
-    max_fruits = 0
+    max_fruits = 0 #NOTE: answer holder.
 
-    for right in range(n):
-        fruit = fruits[right]
+    for right in range(n): 
+        fruit = fruits[right] #NOTE: this holds the current fruit or element, in the array.
+        #NOTE: in the dictionary we update the frequency of the current fruit by first getting the value of the current fruit and then updating it.
         fruit_count[fruit] = fruit_count.get(fruit,0) + 1
-
-        while len(fruit_count) > 2:
-            left_fruit = fruits[left]
+ 
+        #NOTE: while loop for window resizing.
+        while len(fruit_count) > 2: #NOTE: while the fruit_count is greater than 2, which is not optimal.
+            left_fruit = fruits[left] #NOTE: take the first fruit of the current sub_array and then decrement the frequency of that fruit indication of removing one element from the dictionary.
             fruit_count[left_fruit] -= 1
 
+        #NOTE:this part contains if the frequency of a fruit is zero, then we should delete it from the dictionary.
             if fruit_count[left_fruit] == 0:
                 del fruit_count[left_fruit]
-            left += 1
+            left += 1 #NOTE: and then we increment the left pointer , decreasing the size of the window.
 
-        max_fruits = max(max_fruits, right-left + 1)
+        max_fruits = max(max_fruits, right-left + 1) #NOTE: counting the max_fruits that sub_array can accomodate at the end.
     return max_fruits
 
 def main():
