@@ -1,3 +1,4 @@
+#HACK: page no : 13 new book.
 #FIXME: given a string and an integer k, we gotta find the max length of a substring, where you can select k number of characters in a substring and change it to any upper character.
 #example: Example 2:
 #
