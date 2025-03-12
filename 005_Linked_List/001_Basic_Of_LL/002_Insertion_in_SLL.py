@@ -33,7 +33,7 @@ def insert_tail(head,val):
     return head
 
 
-#TODO: A Function to add a node to the given position.
+#TODO: A Function to add a node to the given position. here k is the position.
 def insert_at_pos(head,val,k):
     if not head:
         if k == 1: #NOTE: we also have to check for the position.
