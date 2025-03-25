@@ -5,9 +5,10 @@ class Node:
     def __init__(self,data1,next1 = None):
         self.data=data1
         self.next=next1
+
 #TODO: self is a just a reference to the current object of the class.
 #it can be of any name not just self.
-#the point of writing if is to confirm this program or script is running directly and not imported and running.
+#the point of writing "if" is to confirm this program or script is running directly and not imported as a module and running.
 if __name__ == "__main__":
     print("Finalyy reached Linked List penchoo..")
     arr = [2,3,4,6,6,7]
