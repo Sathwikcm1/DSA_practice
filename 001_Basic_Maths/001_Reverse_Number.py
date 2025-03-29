@@ -14,7 +14,7 @@ def reverse_Num(n):
         n = n//10 #NOTE: Integer division is important here. 
     return rev_no if rev_no <= 0x7fffffff else 0
 
-n = -123
+n = -10
 ans = reverse_Num(n)
 print("The original number is : ",n)
 print("The reversed number is : ",ans)
