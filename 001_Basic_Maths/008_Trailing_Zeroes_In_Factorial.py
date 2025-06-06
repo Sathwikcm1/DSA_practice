@@ -1,4 +1,5 @@
 #FIXME: find the number of trailing zeroes in N!
+#HACK: in the last page of the new book it has been explained with the example of 15 check it out.
 #for example: in 5!(120) = 1, in 10!(3,628,800) = 2.
 
 def trailing_zeroes_in_factorial(n):
