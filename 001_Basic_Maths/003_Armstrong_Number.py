@@ -1,11 +1,13 @@
-#FIXME: Armstrong number is a number when the digits of the given number are raised to power of number of digits and add them
+# FIXME: Armstrong number is a number when the digits of the given number are raised to power of number of digits and add them
 # the result will be the number itself
 # example: 371 = 3^3 + 7^3 + 1^3
 
 def basic_is_Armstrong(n):
-    if n < 0:
+
+
+if n < 0:
         return False
-    #NOTE: if the number is negative it is generally not considered for armstrong number.
+    # NOTE: if the number is negative it is generally not considered for armstrong number.
 
 
     og_n = n #NOTE: copying the original number.
