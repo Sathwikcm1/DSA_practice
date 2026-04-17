@@ -41,7 +41,7 @@ if (isPlanidrome_string_method(10901)):
 
 # NOTE: Leetcode Program:
 
-Class Solution():
+class Solution:
     def isPalindrome(self, n):
         if n < 0:
             return False
