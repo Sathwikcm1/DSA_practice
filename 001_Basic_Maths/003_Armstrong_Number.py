@@ -5,7 +5,7 @@
 def basic_is_Armstrong(n):
 
 
-if n < 0:
+    if n < 0:
         return False
     # NOTE: if the number is negative it is generally not considered for armstrong number.
 
@@ -34,11 +34,11 @@ if n < 0:
     return sum_of_powers == og_n
 
 
-n = 371
-if basic_is_Armstrong(n):
-    print("The given number is Armstrong")
-else:
-    print("The given number is not Armstrong.")
+    n = 371
+    if basic_is_Armstrong(n):
+        print("The given number is Armstrong")
+    else:
+        print("The given number is not Armstrong.")
 
 #TODO: if we really want to make this easy you always convert the number into a string.
 
