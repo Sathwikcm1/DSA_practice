@@ -40,7 +40,7 @@ if basic_is_Armstrong(n):
 else:
     print("The given number is not Armstrong.")
 
-#TODO: if we really want to make this easy you alwasy convert the number into a string.
+#TODO: if we really want to make this easy you always convert the number into a string.
 
 def string_Armstrong(n):
     if n < 0:
