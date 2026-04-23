@@ -26,6 +26,15 @@ def optimal_approach(n):
             #example: n = 25 and i = 5, here, 5 * 5, so both of them is five, we only cnt it once so.
             if n//i != i:
                 cnt+=1
+            #NOTE: if the number is 25, then 25//i: let's say i is 5, it will give us 5, so that is equal to i. 
+            #? Example: n = 36, i = 4.
+
+            # n % i == 0 → 36 % 4 == 0 ✅
+
+            # n // i = 36 // 4 = 9
+
+            # Since 9 != 4, the condition is true, so you add another count for the divisor 9.
+            # This way, both 4 and 9 are counted.
     if cnt == 2:
         print(f"{n} is a prime number.")
     else:
