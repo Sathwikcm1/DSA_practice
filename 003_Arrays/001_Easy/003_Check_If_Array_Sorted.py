@@ -1,20 +1,28 @@
-#FIXME: we have to check if the given array is sorted or not.
-def brute_force(arr,n):
-    #NOTE: This is obviously brute_force solution which takes O(N) time complexity.
-    drop_count = 0
-    # we basically loop through the array starting from index 1, if arr[i] is less than the previous element arr[i-1] we return false otherwise true.
-    for i in range(n):
-        
-        if arr[i] > arr[(i+1) % n]:
-            drop_count += 1 
-            if drop_count > 1:
-                return False 
-    #NOTE: drop_count is used for the rotated array purpose. drop_count should be one if it is more than that we return false.
-    return True 
+#FIXME: Check if the array is sorted (non-decreasing order).
+#* Pattern: Linear Scan | Technique: Adjacent Pair Comparison
+
+class Solution:
+    #TODO: Brute — Sort a copy and compare with original.
+    #NOTE: sorted() creates a new sorted list, == compares element-by-element.
+    #NOTE: Time: O(n log n) | Space: O(n)
+    def brute(self, arr: list[int]) -> bool:
+        return sorted(arr) == arr
+
+    #TODO: Optimal — Single pass, check every adjacent pair.
+    #NOTE: If any arr[i] > arr[i+1], array is NOT sorted → return False immediately.
+    #NOTE: range(len(arr)-1) ensures i+1 is always in bounds. No modulo needed.
+    #NOTE: Time: O(n) | Space: O(1)
+    def optimal(self, arr: list[int]) -> bool:
+        for i in range(len(arr) - 1):
+            if arr[i] > arr[i + 1]:
+                return False
+        return True
 
 
-if __name__ == "__main__":
-    arr = [2,5,6,7,8,10]
-    arr2 = [3,4,5,1,2] #this array should also be considered sorted since it is only rotated to left by 2 places.
-    n = len(arr2)
-    print("Brute force approach: ", "The array is sorted" if brute_force(arr,n) else "No, The array is not sorted.")
+def main():
+    arr = [1, 2, 3, 4, 5]
+    sol = Solution()
+    print("Brute:", sol.brute(arr))
+    print("Optimal:", sol.optimal(arr))
+
+main()
