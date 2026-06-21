@@ -30,4 +30,5 @@ def main():
     print("Optimal:", s.optimal(arr))
     print("Built-in:", max(arr))   #NOTE: Pythonic way — use max() in real code
 
+    # calling main function
 main()
