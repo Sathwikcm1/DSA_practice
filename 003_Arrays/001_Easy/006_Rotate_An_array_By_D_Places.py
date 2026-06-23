@@ -1,56 +1,54 @@
-#FIXME: The question is to rotate the given array to right by d no of places, for example, arr = [1,2,3,4,5], d = 3, output : arr = [4,5,1,2,3].
+#FIXME: Rotate an array LEFT by "D" places. [1,2,3,4,5,6] d=3 → [4,5,6,1,2,3]
+#* Pattern: Array Manipulation | Technique: Reversal Trick (Three Reversals)
 
-#TODO: The story of the brute force solution, we can just use a temporary array to put the elements till d, to the temporary array and then put the rest of the elements put back to the original array.
-def brute_force(arr,k):
-    n = len(arr)
-    k = k%n  #NOTE: if the value of k > n, it will in range after this.
-    if k == 0: #NOTE: even after that if the value of k is zero, that means they want the original array.
-        return arr
-    temp = [0] * n 
-    #NOTE: copying the last k elements to the temp array.
-    for i in range(k):
-        temp[i] = arr[n-k+i]
-    #NOTE: copying the remaining elements to the temp array.
-    for i in range(n - k):
-        temp[k+i] = arr[i]
-    #NOTE: copying the whole temp array to the original array.
-    for i in range(n):
-        arr[i] = temp[i]
-#TODO: The time complexity is O(2N), so basically O(N).
+class Solution:
+    #TODO: Brute — Store first d elements in temp, shift rest left, place temp at end.
+    #NOTE: d = d % n handles cases where d > array length (rotating by n = no change).
+    #NOTE: Time: O(n) | Space: O(d) for temp array
+    def brute(self, arr: list[int], d: int) -> None:
+        n = len(arr)
+        d = d % n
+        temp_arr = []
+        for i in range(d):
+            temp_arr.append(arr[i])
+        for i in range(d):
+            arr[i] = arr[n - d + i]
+        for i in range(len(temp_arr)):
+            arr[d + i] = temp_arr[i]
 
+    #NOTE: Helper — Reverse array between start and end indices (two-pointer swap)
+    def reverse(self, arr: list[int], start: int, end: int) -> None:
+        while start < end:
+            arr[start], arr[end] = arr[end], arr[start]
+            start += 1
+            end -= 1
 
-def reverse(arr,start,end):
-    while start < end:
-        arr[start],arr[end] = arr[end],arr[start]
-        start+=1 
-        end -= 1
+    #TODO: Optimal — Three reversals: reverse first d, reverse rest, reverse whole.
+    #NOTE: Think of array as [A | B]. We want [B | A].
+    #NOTE: Reverse A → A', Reverse B → B', Reverse(A'B') → [B | A] ✅
+    #NOTE: Time: O(n) | Space: O(1) — purely in-place, no extra array
+    def optimal(self, arr: list[int], d: int) -> None:
+        n = len(arr)
+        d = d % n
+        if d == 0:
+            return
+        self.reverse(arr, 0, d - 1)
+        self.reverse(arr, d, n - 1)
+        self.reverse(arr, 0, n - 1)
 
-#TODO: The story of optimal, we can rotate the array till k, after we rotate from k + 1 to n, and then rotate the whole array.
-def optimal(arr,k):
-    n = len(arr)
-    k = k%n #NOTE: again to make the k value valid, which less than n.
-
-    if k == 0:
-        return arr
-    #NOTE: reverse the first half of the array. reverse(array, start, end) 
-    reverse(arr,0,n-k-1)
-    #NOTE: reverse the remaining half of the array.
-    reverse(arr,n-k,n-1)
-    #NOTE: Now reverse the whole array after reversing those halves.
-    reverse(arr,0,n-1)
-#TODO: The time complexity of the optimal approach is O(N).
-
+    #* Pythonic alternative:
+    #* arr[:] = arr[d:] + arr[:d]   — slicing, O(n) space
 
 
-if __name__ == "__main__":
-    arr = [1,2,3,4,5,6,7,8]
-    k = 2
-    print("Before rotating the array by k places: ", arr)
-    brute_force(arr,k)
-    print("After rotating the array by k places using brute_force approach: ",arr)
+def main():
+    arr = [1, 2, 3, 4, 5, 6]
+    sol = Solution()
 
+    sol.brute(arr, 3)
+    print("Brute:", arr)
 
-    arr = [1,2,3,4,5,6,7,8]
-    print("The array before: ",arr)
-    optimal(arr,k)
-    print("The array after rotating the array by d places using optimal: ",arr)
+    arr2 = [1, 2, 3, 4, 5, 6]
+    sol.optimal(arr2, 3)
+    print("Optimal:", arr2)
+
+main()
