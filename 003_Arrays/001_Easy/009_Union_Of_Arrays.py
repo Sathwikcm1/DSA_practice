@@ -1,75 +1,70 @@
-#FIXME: Union of Arrays: union of two arrays include all the elements of both of the array, but the elements are not repeated.
-#TODO: well we can use sets for that, sets cannot contain the duplicate elements.
-#add elements of both the arrays into the set and print it.
-def brute_force(arr1,arr2):
-    st = set()
-    for i in range(len(arr1)):
-        st.add(arr1[i])
-    for i in range(len(arr2)):
-        st.add(arr2[i])
-    print(st)
+#FIXME: Union of two sorted arrays — result should contain all unique elements from both.
+#* Pattern: Two Pointers (merge) | Also: Set / Dict approaches
 
 
-def dictionaries(arr1,arr2):
-    freq = {} #NOTE: initializing dictionary.
-    union = [] #NOTE: The answer array.
-    
-    for num in arr1:
-        freq[num] = freq.get(num,0) + 1
+class Solution:
+    #TODO: Brute — Use set union. Handles unsorted arrays too.
+    #NOTE: set() removes duplicates, | operator combines both sets.
+    #NOTE: Time: O(n + m) | Space: O(n + m) for the set
+    def brute(self, arr1: list[int], arr2: list[int]) -> list[int]:
+        return sorted(set(arr1) | set(arr2))
 
-    for num in arr2:
-        freq[num] = freq.get(num,0) + 1
+    #TODO: Better — Use dictionary to count, then extract keys.
+    #NOTE: dict.get(key, default) returns default if key missing — avoids KeyError.
+    #NOTE: We only care about keys (unique elements), values (counts) are irrelevant for union.
+    #NOTE: Time: O(n + m) | Space: O(n + m)
+    def better(self, arr1: list[int], arr2: list[int]) -> list[int]:
+        freq: dict[int, int] = {}
+        for num in arr1:
+            freq[num] = freq.get(num, 0) + 1
+        for num in arr2:
+            freq[num] = freq.get(num, 0) + 1
+        return sorted(freq.keys())
 
-    for num in freq:
-        union.append(num)
-    return union
-#NOTE: Notes about dictionaries in python:
-# declaration of dictionary: my_dic = {'key1' : 'value1', 'key2', 'value2'} or my_dic = dict(key1 = 'value1', key2 = 'value2')
-# common dictionary methods. 
-# get: returns the value for the specified key.ex: value = my_dic.get('key1','default value') , if the key doesn't exists it will return the default value itself.
-# keys() : returns a view object that displays a list of all the keys in the dictionary.
-# ex: keys = my_dic.keys() , returns (['key1,key2...']) etc.
-# values(): Returns a view object that displays a list of all the values in the dictionary.
-# ex: values = my_dic.values() , returns all the values (['value1','value2'...])
-# items(): returns a view object that displays a list of dictionary's key-value pairs.
-# update(): my_dic.update({'key3': 'value3'}), adds key3 to the dictionary.
-# pop(key, default=None) , removes the specific key and returns it's value. if the key is not found, returns the default.
+    #TODO: Optimal — Two pointer merge on SORTED arrays. No hashing needed.
+    #NOTE: Both arrays MUST be sorted for this to work!
+    #NOTE: Walk two pointers like a zipper — smaller element goes first.
+    #NOTE: Skip duplicates by checking if union[-1] == current element.
+    #NOTE: After one array is exhausted, drain the other.
+    #NOTE: Time: O(n + m) | Space: O(n + m) for the result array only
+    def optimal(self, arr1: list[int], arr2: list[int]) -> list[int]:
+        union: list[int] = []
+        i, j = 0, 0
 
+        #NOTE: Main merge — compare arr1[i] vs arr2[j], pick the smaller one.
+        while i < len(arr1) and j < len(arr2):
+            if arr1[i] <= arr2[j]:
+                if not union or union[-1] != arr1[i]:
+                    union.append(arr1[i])
+                i += 1
+            else:
+                if not union or union[-1] != arr2[j]:
+                    union.append(arr2[j])
+                j += 1
 
-
-#TODO: Using two pointer method:
-def two_pointer(arr1,arr2):
-    i,j = 0,0 #NOTE: pointers.
-    union = [] #Union list.
-
-
-    while i < len(arr1) and j < len(arr2):
-        if arr1[i] <= arr2[j]:
-            if len(union) == 0 or union[-1] != arr1[i]:
+        #NOTE: Drain remaining elements from arr1 (if arr2 finished first)
+        while i < len(arr1):
+            if not union or union[-1] != arr1[i]:
                 union.append(arr1[i])
-            i+=1
-        else:
-            if len(union) == 0 or union[-1] != arr2[j]:
+            i += 1
+
+        #NOTE: Drain remaining elements from arr2 (if arr1 finished first)
+        while j < len(arr2):
+            if not union or union[-1] != arr2[j]:
                 union.append(arr2[j])
-            j+=1
+            j += 1
 
-    while i < len(arr1):
-        if len(union) == 0 or union[-1] != arr1[i]:
-            union.append(arr1[i])
-        i+=1 
+        return union
 
-    while j < len(arr2):
-        if len(union) == 0 or union[-1] != arr2[j]:
-            union.append(arr2[j])
-        j+=1
-    return union
 
-if __name__ == "__main__":
-    arr1 = [1,2,3,4,5,6]
-    arr2 = [4,5,6,3,2,4,6]
-    brute_force(arr1,arr2)
+def main():
+    arr1 = [1, 2, 3, 4, 5, 6, 6, 7]
+    arr2 = [0, 1, 2, 3, 4, 8, 9]
 
-    ans = dictionaries(arr1,arr2)
-    print(*ans)
-    ans2 = two_pointer(arr1,arr2)
-    print(*ans2)
+    sol = Solution()
+    print("Brute:", sol.brute(arr1, arr2))
+    print("Better:", sol.better(arr1, arr2))
+    print("Optimal:", sol.optimal(arr1, arr2))
+
+
+main()
