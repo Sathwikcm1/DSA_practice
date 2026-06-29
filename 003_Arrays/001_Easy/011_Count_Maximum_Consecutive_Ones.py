@@ -1,19 +1,29 @@
-#FIXME: Count Maximum repeating ones consecutively.
-#example: prices = {1, 1, 0, 1, 1, 1}, output : 3, because there are three ones consecutively.
+#FIXME: Count maximum consecutive ones in a binary array.
+#* Pattern: Linear Scan | Technique: Running counter with reset
+#NOTE: Example: [1,1,0,1,1,1] → output: 3 (three ones in a row)
 
 
-def solution(arr):
-    max_count, count = 0,0
+class Solution:
+    #TODO: Optimal — Single pass. Track current streak and max streak.
+    #NOTE: If current element is 1 → increment counter. Otherwise → reset to 0.
+    #NOTE: Update max after every increment. No need for separate comparison step.
+    #NOTE: Time: O(n) | Space: O(1) — can't do better since you must see every element.
+    def sol(self, arr: list[int]) -> int:
+        cnt = 0
+        largest_cnt = 0
+        for num in arr:
+            if num == 1:
+                cnt += 1
+                largest_cnt = max(largest_cnt, cnt)
+            else:
+                cnt = 0
+        return largest_cnt
 
-    for i in range(len(arr)):
-        if arr[i] == 1:
-            count+=1
-            max_count = max(max_count, count)
-        else:
-            count = 0
-    return max_count
 
-arr = [1,2,1,1,1,0,1,1]
-ans=solution(arr)
-print("The number of maximum consecutive ones are ",ans)
+def main():
+    arr = [1, 1, 1, 0, 1, 1]
+    sol = Solution()
+    print(f"Max consecutive ones: {sol.sol(arr)}")
 
+
+main()

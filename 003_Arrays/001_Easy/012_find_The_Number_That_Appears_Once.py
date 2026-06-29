@@ -1,87 +1,78 @@
-#FIXME: In the given array, every element will be repeated twice except for one element we need to find that element and return it.
-
-#TODO: So the brute force approach for this problem would be to,
-#if one element is only reapeated once that means the total size of the array is even.
-#story: we got two for loops, one loop will have the element[arr[i]], we will take it as num, and then we have another for loop, the inner one is only required for comparing this num, to increment the count.
-#if we find the num equivalent to any other number we increment, after the inner for loop , we check if the count is equal to one, that means the num is only present one time and we return that element.
+#FIXME: In the given array, every element is repeated twice except for one element, return it.
+#* Pattern: XOR / Hashing | Technique: Frequency counting, XOR cancellation
 
 
-def brute_force(arr:[int])->int:
-    n = len(arr)
-    #NOTE: checking the lenght is equal to even or not. because if one element is only once repeated the lenght of the array cannot be even.
-    if n % 2 == 0:
+class Solution:
+    #TODO: Brute — For each element, count how many times it appears using nested loop.
+    #NOTE: Outer loop picks element, inner loop counts occurrences. If count == 1, found it.
+    #NOTE: Time: O(n²) | Space: O(1)
+    #NOTE: ⚠️ LIMITATION: Extremely slow for large arrays. 10⁵ elements = 10¹⁰ operations.
+    def brute(self, arr: list[int]) -> int:
+        n = len(arr)
+        if n % 2 == 0:
+            return -1
+        #NOTE: If array size is even, every element must appear twice — impossible to have a single one.
+        for i in range(n):
+            cnt = 0
+            num = arr[i]
+            for j in range(n):
+                if arr[j] == num:
+                    cnt += 1
+            if cnt == 1:
+                return num
         return -1
-    for i in range(n):
-        cnt = 0
-        num = arr[i]
-        for j in range(n):
-            if arr[j] == num:
-                cnt+=1
-        if cnt == 1:
-            return num
-    return -1
-#NOTE: this will take the time complexity as O(N^2)
+
+    #TODO: Better 1 — Hash Array. Create array of size max_val+1, use indices as keys.
+    #NOTE: Time: O(n) | Space: O(max_val)
+    #NOTE: ⚠️ LIMITATION: Only works with POSITIVE numbers (no negative indices).
+    #NOTE: ⚠️ LIMITATION: Wastes space if max_val is huge (e.g., arr=[1, 999999] → allocates 1M slots).
+    def hash_array(self, arr: list[int]) -> int:
+        max_val = max(arr)
+        hash_arr = [0] * (max_val + 1)
+        for num in arr:
+            hash_arr[num] += 1
+        for i in range(len(hash_arr)):
+            if hash_arr[i] == 1:
+                return i
+        return -1
+
+    #TODO: Better 2 — HashMap (Dictionary). Flexible, works with negatives, strings, anything.
+    #NOTE: freq.get(num, 0) is the Pythonic shortcut for the if/else check below.
+    #NOTE: Counter(arr) from collections does the same thing in one line — interview flex.
+    #NOTE: Time: O(n) | Space: O(n) — stores at most n/2 + 1 unique keys
+    #NOTE: ⚠️ LIMITATION: Uses O(n) extra space unlike XOR which uses O(1).
+    def hash_map(self, arr: list[int]) -> int:
+        count: dict[int, int] = {}
+        for num in arr:
+            if num in count:
+                count[num] += 1
+            else:
+                count[num] = 1
+        #NOTE: Pythonic alternative: count[num] = count.get(num, 0) + 1
+        #NOTE: Even more Pythonic: from collections import Counter → count = Counter(arr)
+        for num in count:
+            if count[num] == 1:
+                return num
+        return -1
+
+    #TODO: Optimal — XOR everything. Pairs cancel (a^a=0), the loner survives.
+    #NOTE: Time: O(n) | Space: O(1) — no extra data structures at all.
+    #NOTE: ⚠️ LIMITATION: Only works when every OTHER element appears EXACTLY twice.
+    #NOTE: If elements appear 3 times or odd times, XOR won't isolate the single one.
+    def optimal(self, arr: list[int]) -> int:
+        xor = 0
+        for num in arr:
+            xor ^= num
+        return xor
 
 
-
-#TODO: The better solution, we use the hashmap or hasharray for this one.
-def better_solution(arr):
-    n = len(arr)
-    maxi = max(arr) #NOTE: yes, this will the give the max element present in the array.
-    #NOTE: The reason we calculated this, to initiate the hash array till the max element so that we can increment till there, since we are using hasharray we have to do it.
-    ha = [0] * (maxi + 1)  #NOTE: initialising the hasharray with zeroes.
-
-    #NOTE: incrementing the count for each element. (O(N))
-    for i in range(n):
-        ha[arr[i]] += 1
-
-    for i in range(len(ha)): #NOTE: checking if the count of the num is 1 or not. O(n), not the full lenght, until we find the single repeated element, it is dynamic.
-        if ha[arr[i]] == 1:
-            return arr[i]
-    return -1 #NOTE: if no number is repeated once, then we return -1.
-
-#TODO: This again will take O(2N) time complexity.
-#FIXME: the above hasharray code will work if the given array has only postive numbers, if it contains negative numbers it will throw index out of bound for list error.
-#TODO: For that we gonna have to use hash_map instead of hasharray. told ya mf.
-
-def better_solution_using_hashmap(arr):
-    n = len(arr)
-    count = {} #NOTE: this is the dictionary init.
-    for num in arr:
-        if num in count: #NOTE: first we check if it is already present in the dictionary or not, if it is we just increment the value of the key.
-            count[num] += 1
-            #NOTE: if the key is not present in the dictionary we will assign 1 to the value.
-        else:
-            count[num] = 1
-            #HACK: this above for loop will take around O(n).
-
-    #NOTE: we check if the value of the key is one or not , if it is we return the key, which is num.
-    for num in count:
-        if count[num] == 1:
-            return num
-    #HACK: this for loop for the worst case will again take O(n), so total will be O(2n).
-
-    return -1
+def main():
+    arr = [1, 1, 2, 3, 3, 4, 5, 6, 5, 4, 6]
+    sol = Solution()
+    print("Brute:", sol.brute(arr))
+    print("Hash Array:", sol.hash_array(arr))
+    print("Hash Map:", sol.hash_map(arr))
+    print("Optimal (XOR):", sol.optimal(arr))
 
 
-
-
-#TODO: This is the optimal solution for the question.
-# Using xor , if the the same values are xored with each other , they will cancel out, 
-# so for our question, if the array has same elements are repeated twice and we xorr them nothing will remain except for the element that is only repeated once.
-def optimal(arr):
-    xorr = 0
-    for num in arr:
-        xorr ^= num 
-    return xorr
-#HACK: this will take around O(n).
-#NOTE: if the array length is even the xorr will return 0, in which case we have to check that.
-
-if __name__ == "__main__":
-    arr = [1,1,2,2,3,4,4]
-    ans = brute_force(arr)
-    ans2 = better_solution(arr)
-    print(ans2)
-    print(ans)
-    ans3 = optimal(arr)
-    print(ans3)
+main()
