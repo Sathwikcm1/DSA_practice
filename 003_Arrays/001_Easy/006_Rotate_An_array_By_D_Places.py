@@ -5,16 +5,16 @@ class Solution:
     #TODO: Brute — Store first d elements in temp, shift rest left, place temp at end.
     #NOTE: d = d % n handles cases where d > array length (rotating by n = no change).
     #NOTE: Time: O(n) | Space: O(d) for temp array
-    def brute(self, arr: list[int], d: int) -> None:
-        n = len(arr)
-        d = d % n
-        temp_arr = []
-        for i in range(d):
-            temp_arr.append(arr[i])
-        for i in range(d):
-            arr[i] = arr[n - d + i]
-        for i in range(len(temp_arr)):
-            arr[d + i] = temp_arr[i]
+    def brute(self,arr,d): 
+        temp = []
+        d = d%len(arr)
+        for i in range(d): 
+            temp.append(arr[i])
+        for i in range(d,len(arr)): 
+            arr[i-d] = arr[i]
+        for i in range(d): 
+            arr[len(arr)-d+i] = temp[i]
+
 
     #NOTE: Helper — Reverse array between start and end indices (two-pointer swap)
     def reverse(self, arr: list[int], start: int, end: int) -> None:

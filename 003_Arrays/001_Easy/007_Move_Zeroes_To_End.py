@@ -32,21 +32,13 @@ class Solution:
     #NOTE: When we swap a non-zero into j's position, j advances — zeros accumulate at end.
     #NOTE: Like OS memory compaction: active blocks move left, free space collects at the end.
     #NOTE: Time: O(n) | Space: O(1) — no extra array, purely in-place swaps
-    def optimal(self, arr: list[int]) -> None:
-        j = -1
-        #NOTE: Step 1 — Find the index of the FIRST zero. break immediately.
-        for i in range(len(arr)):
-            if arr[i] == 0:
-                j = i
-                break
-        #NOTE: If j is still -1, no zeros exist in the array — nothing to move.
-        if j == -1:
-            return
-        #NOTE: Step 2 — Scan from j+1. Every non-zero swaps with arr[j], then j advances.
-        for i in range(j + 1, len(arr)):
-            if arr[i] != 0:
-                arr[i], arr[j] = arr[j], arr[i]
-                j += 1
+    def optimal(self, arr): 
+        i = 0
+        for j in range(len(arr)): 
+            if arr[j] != 0:
+                arr[i], arr[j] = arr[j], arr[i]  # in-place swap
+                i += 1
+        return arr
 
 
 def main():
