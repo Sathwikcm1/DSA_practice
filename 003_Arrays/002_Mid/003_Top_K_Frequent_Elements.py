@@ -73,21 +73,50 @@ class Solution:
 #NOTE:   lambda x: x[1]  → anonymous function that returns x[1]
 #NOTE:   Same as: def get_second(x): return x[1]
 #NOTE:   Used in: .sort(key=lambda x: x[1])  → "sort by second element of each tuple"
+#NOTE:   WHY lambda? Because .sort(key=...) needs a FUNCTION, not a value.
+#NOTE:   You can't write .sort(key=x[1]) — x doesn't exist there. Lambda CREATES the function.
+#NOTE:
+#NOTE: .sort() FULL SYNTAX:
+#NOTE:   list.sort(key=None, reverse=False)
+#NOTE:   key = a function that extracts what to sort by (default: sort by element itself)
+#NOTE:   reverse = True for descending, False for ascending (default)
+#NOTE:   Examples:
+#NOTE:     nums.sort()                                → ascending
+#NOTE:     nums.sort(reverse=True)                    → descending
+#NOTE:     tuples.sort(key=lambda x: x[1])            → sort by second element
+#NOTE:     tuples.sort(key=lambda x: x[1], reverse=True)  → descending by second element
 #NOTE:
 #NOTE: SORTING TUPLES:
 #NOTE:   items = [(1, 3), (2, 2), (3, 1)]
 #NOTE:   items.sort(key=lambda x: x[1])              → sort by count ascending
 #NOTE:   items.sort(key=lambda x: x[1], reverse=True) → sort by count descending
 #NOTE:
+#NOTE: LIST COMPREHENSION (one-liner for loop):
+#NOTE:   [x[0] for x in [(1,3), (2,2)]]  → [1, 2]
+#NOTE:   Same as: res = []; for x in list: res.append(x[0])
+#NOTE:
+#NOTE: COUNTER (from collections):
+#NOTE:   Counter([1,1,1,2,2,3]) → Counter({1: 3, 2: 2, 3: 1})
+#NOTE:   Same as doing the freq.get(num, 0) + 1 loop manually.
+#NOTE:   .most_common(k) → returns top k as [(element, count)] tuples, sorted.
+#NOTE:
 #NOTE: HEAPQ MODULE:
 #NOTE:   Python's heapq is a MIN-heap (smallest at top)
 #NOTE:   heapq.heappush(heap, item) → add item, maintain heap property
 #NOTE:   heapq.heappop(heap) → remove and return SMALLEST item
+#NOTE:   For TUPLES: heap compares by FIRST element of tuple.
+#NOTE:     heappush(heap, (count, num)) → sorts by count (first element)
 #NOTE:   For a MAX-heap, push negative values: heappush(heap, -val)
 #NOTE:
-#NOTE: COUNTER.most_common(k):
-#NOTE:   Counter([1,1,1,2,2,3]).most_common(2) → [(1, 3), (2, 2)]
-#NOTE:   Returns k most common elements as (element, count) tuples
+#NOTE: freq.items() vs list(freq.items()):
+#NOTE:   freq.items() → dict_items object (NOT a list, can't sort directly!)
+#NOTE:   list(freq.items()) → actual list of tuples, NOW you can sort it.
+#NOTE:
+#NOTE: ===== SATHWIK'S MISTAKES (Aug 7) =====
+#NOTE: 1. Called .sort() on dict_items directly → must wrap with list() first
+#NOTE: 2. Wrote reverse=true (lowercase t) → Python needs reverse=True (capital T)
+#NOTE: 3. Forgot self.method_name() when calling helper inside class
+#NOTE: 4. Overwrote dict itself (dict = dict.get(...)) instead of dict[key] = value
 
 
 if __name__ == "__main__":
@@ -132,4 +161,3 @@ if __name__ == "__main__":
     print("  Brute:", obj.brute(nums, k))      # [3, 5, 7]
     print("  Better:", obj.better(nums, k))    # [3, 5, 7]
     print("  Optimal:", obj.optimal(nums, k))  # [3, 5, 7]
-        return res
