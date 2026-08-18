@@ -66,7 +66,6 @@ class Solution:
                 heapq.heappop(heap)  #NOTE: Pops the MINIMUM (least frequent) element
         return [num for count, num in heap]  #NOTE: Extract just the numbers from heap
 
-
 #NOTE: ===== PYTHON TIPS & BUILT-INS =====
 #NOTE:
 #NOTE: LAMBDA FUNCTIONS:
