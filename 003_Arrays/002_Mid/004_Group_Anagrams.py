@@ -1,3 +1,7 @@
+from collections import defaultdict
+from typing import DefaultDict
+
+
 class Solution: 
     def is_anagram(self,s1,s2): 
         return sorted(s1) == sorted(s2)
@@ -17,3 +21,12 @@ class Solution:
                         used[j] = True
                 result.append(group)
         return result
+
+    def optimal(self,strs): 
+        groups = defaultdict(list)
+        for word in strs: 
+            signature = "".join(sorted(word))
+            groups[signature].append(word)
+        return list(groups.values())
+
+
