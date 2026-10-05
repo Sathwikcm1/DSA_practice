@@ -1,0 +1,17 @@
+# --- Agent / instruction files (don't push these to GitHub) ---
+.github/
+
+# --- Editor / IDE junk ---
+.vscode/
+
+# --- Python cache & virtual envs ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# NOTE: Notes/ folder is intentionally NOT ignored — your notes get pushed.
